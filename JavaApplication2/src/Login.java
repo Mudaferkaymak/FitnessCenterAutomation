@@ -29,6 +29,7 @@ public class Login extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
+        jPanel5 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -49,7 +50,7 @@ public class Login extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel2.setBackground(new java.awt.Color(102, 102, 102));
+        jPanel2.setBackground(new java.awt.Color(0, 153, 153));
         jPanel2.setForeground(new java.awt.Color(153, 255, 255));
         jPanel2.setPreferredSize(new java.awt.Dimension(400, 595));
 
@@ -62,23 +63,36 @@ public class Login extends javax.swing.JFrame {
         jLabel7.setFont(new java.awt.Font("Segoe UI", 2, 14)); // NOI18N
         jLabel7.setText("2017'den beri...");
 
+        jPanel5.setBackground(new java.awt.Color(255, 255, 255));
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 17, Short.MAX_VALUE)
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
+                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 294, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(94, 94, 94)
-                                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(65, 65, 65)
+                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 306, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(74, 74, 74)
-                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 306, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(1157, 1157, 1157))
+                        .addGap(84, 84, 84)
+                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(17, 17, 17)
+                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 294, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(2132, 2132, 2132))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -90,16 +104,18 @@ public class Login extends javax.swing.JFrame {
                 .addGap(40, 40, 40)
                 .addComponent(jLabel7)
                 .addContainerGap(143, Short.MAX_VALUE))
+            .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         getContentPane().add(jPanel2, java.awt.BorderLayout.CENTER);
 
-        jPanel1.setBackground(new java.awt.Color(0, 51, 102));
+        jPanel1.setBackground(new java.awt.Color(0, 102, 102));
         jPanel1.setPreferredSize(new java.awt.Dimension(600, 0));
 
-        jPanel3.setBackground(new java.awt.Color(0, 51, 102));
+        jPanel3.setBackground(new java.awt.Color(0, 102, 102));
         jPanel3.setPreferredSize(new java.awt.Dimension(500, 115));
 
+        jLabel1.setBackground(new java.awt.Color(255, 255, 204));
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("             MMMOO GYM'E HOŞGELDİN");
@@ -108,7 +124,7 @@ public class Login extends javax.swing.JFrame {
 
         jPanel1.add(jPanel3);
 
-        jPanel4.setBackground(new java.awt.Color(0, 51, 102));
+        jPanel4.setBackground(new java.awt.Color(0, 102, 102));
         jPanel4.setPreferredSize(new java.awt.Dimension(500, 75));
 
         jButton1.setBackground(new java.awt.Color(255, 0, 51));
@@ -125,14 +141,14 @@ public class Login extends javax.swing.JFrame {
 
         jPanel1.add(jPanel4);
 
-        jPanel6.setBackground(new java.awt.Color(0, 51, 102));
+        jPanel6.setBackground(new java.awt.Color(0, 102, 102));
         jPanel6.setPreferredSize(new java.awt.Dimension(500, 125));
 
-        jPanel7.setBackground(new java.awt.Color(0, 51, 102));
+        jPanel7.setBackground(new java.awt.Color(0, 102, 102));
         jPanel7.setPreferredSize(new java.awt.Dimension(500, 50));
         jPanel7.setLayout(new java.awt.BorderLayout(0, 2));
 
-        jTextField2.setBackground(new java.awt.Color(153, 153, 153));
+        jTextField2.setBackground(new java.awt.Color(255, 204, 204));
         jTextField2.setPreferredSize(new java.awt.Dimension(64, 20));
         jTextField2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -141,7 +157,7 @@ public class Login extends javax.swing.JFrame {
         });
         jPanel7.add(jTextField2, java.awt.BorderLayout.CENTER);
 
-        jLabel2.setBackground(new java.awt.Color(51, 51, 51));
+        jLabel2.setBackground(new java.awt.Color(255, 255, 204));
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Kullanıcı Adı");
         jLabel2.setPreferredSize(new java.awt.Dimension(66, 22));
@@ -149,17 +165,17 @@ public class Login extends javax.swing.JFrame {
 
         jPanel6.add(jPanel7);
 
-        jPanel10.setBackground(new java.awt.Color(0, 51, 102));
+        jPanel10.setBackground(new java.awt.Color(0, 102, 102));
         jPanel10.setPreferredSize(new java.awt.Dimension(500, 50));
         jPanel10.setLayout(new java.awt.BorderLayout(0, 2));
 
-        jLabel3.setBackground(new java.awt.Color(74, 114, 221));
+        jLabel3.setBackground(new java.awt.Color(255, 255, 204));
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Şifre");
         jLabel3.setPreferredSize(new java.awt.Dimension(40, 22));
         jPanel10.add(jLabel3, java.awt.BorderLayout.PAGE_START);
 
-        jPasswordField1.setBackground(new java.awt.Color(153, 153, 153));
+        jPasswordField1.setBackground(new java.awt.Color(255, 204, 204));
         jPasswordField1.setPreferredSize(new java.awt.Dimension(500, 22));
         jPanel10.add(jPasswordField1, java.awt.BorderLayout.CENTER);
 
@@ -167,7 +183,7 @@ public class Login extends javax.swing.JFrame {
 
         jPanel1.add(jPanel6);
 
-        jPanel11.setBackground(new java.awt.Color(0, 51, 102));
+        jPanel11.setBackground(new java.awt.Color(0, 102, 102));
         jPanel11.setPreferredSize(new java.awt.Dimension(500, 75));
 
         jCheckBox1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -200,7 +216,7 @@ public class Login extends javax.swing.JFrame {
 
         jPanel1.add(jPanel11);
 
-        jPanel12.setBackground(new java.awt.Color(0, 51, 102));
+        jPanel12.setBackground(new java.awt.Color(0, 102, 102));
         jPanel12.setPreferredSize(new java.awt.Dimension(500, 75));
         jPanel12.setLayout(new javax.swing.BoxLayout(jPanel12, javax.swing.BoxLayout.LINE_AXIS));
 
@@ -287,6 +303,7 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPasswordField jPasswordField1;
