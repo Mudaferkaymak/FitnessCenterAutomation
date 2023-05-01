@@ -63,7 +63,7 @@ public class Login extends javax.swing.JFrame {
         jLabel7.setFont(new java.awt.Font("Segoe UI", 2, 14)); // NOI18N
         jLabel7.setText("2017'den beri...");
 
-        jPanel5.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel5.setBackground(new java.awt.Color(255, 255, 204));
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
