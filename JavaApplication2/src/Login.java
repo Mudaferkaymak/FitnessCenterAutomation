@@ -1,3 +1,6 @@
+
+import java.awt.Color;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -25,230 +28,119 @@ public class Login extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel2 = new javax.swing.JPanel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jPanel5 = new javax.swing.JPanel();
-        jPanel1 = new javax.swing.JPanel();
-        jPanel3 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jPanel4 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jPanel6 = new javax.swing.JPanel();
-        jPanel7 = new javax.swing.JPanel();
-        jTextField2 = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
-        jPanel10 = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
+        kGradientPanel1 = new com.k33ptoo.components.KGradientPanel();
+        jTextField3 = new javax.swing.JTextField();
         jPasswordField1 = new javax.swing.JPasswordField();
-        jPanel11 = new javax.swing.JPanel();
-        jCheckBox1 = new javax.swing.JCheckBox();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jPanel12 = new javax.swing.JPanel();
-        jButton2 = new javax.swing.JButton();
+        kButton1 = new com.k33ptoo.components.KButton();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMaximumSize(new java.awt.Dimension(2147, 2147));
 
-        jPanel2.setBackground(new java.awt.Color(0, 153, 153));
-        jPanel2.setForeground(new java.awt.Color(153, 255, 255));
-        jPanel2.setPreferredSize(new java.awt.Dimension(400, 595));
+        kGradientPanel1.setkBorderRadius(15);
+        kGradientPanel1.setkEndColor(new java.awt.Color(0, 51, 204));
+        kGradientPanel1.setkGradientFocus(-11);
+        kGradientPanel1.setkStartColor(new java.awt.Color(204, 204, 255));
+        kGradientPanel1.setOpaque(false);
+        kGradientPanel1.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                kGradientPanel1MouseDragged(evt);
+            }
+        });
+        kGradientPanel1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                kGradientPanel1KeyPressed(evt);
+            }
+        });
+        kGradientPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/images.jpeg"))); // NOI18N
-        jLabel6.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jTextField3.setBackground(new Color(0,0,0,0));
+        jTextField3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jTextField3.setForeground(new java.awt.Color(255, 255, 255));
+        jTextField3.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(255, 255, 255)));
+        jTextField3.setCaretColor(new java.awt.Color(204, 204, 255));
+        jTextField3.setOpaque(false);
+        kGradientPanel1.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 190, 367, 30));
 
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel5.setText("MMMOO GYM ");
+        jPasswordField1.setBackground(new Color(0,0,0,0));
+        jPasswordField1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jPasswordField1.setForeground(new java.awt.Color(255, 255, 255));
+        jPasswordField1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 204, 255)));
+        jPasswordField1.setCaretColor(new java.awt.Color(204, 204, 255));
+        jPasswordField1.setOpaque(false);
+        kGradientPanel1.add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 280, 370, 30));
 
-        jLabel7.setFont(new java.awt.Font("Segoe UI", 2, 14)); // NOI18N
-        jLabel7.setText("2017'den beri...");
-
-        jPanel5.setBackground(new java.awt.Color(255, 255, 204));
-
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 17, Short.MAX_VALUE)
-        );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(65, 65, 65)
-                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 306, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(84, 84, 84)
-                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(17, 17, 17)
-                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 294, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(2132, 2132, 2132))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(86, 86, 86)
-                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(12, 12, 12)
-                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(40, 40, 40)
-                .addComponent(jLabel7)
-                .addContainerGap(143, Short.MAX_VALUE))
-            .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-
-        getContentPane().add(jPanel2, java.awt.BorderLayout.CENTER);
-
-        jPanel1.setBackground(new java.awt.Color(0, 102, 102));
-        jPanel1.setPreferredSize(new java.awt.Dimension(600, 0));
-
-        jPanel3.setBackground(new java.awt.Color(0, 102, 102));
-        jPanel3.setPreferredSize(new java.awt.Dimension(500, 115));
-
-        jLabel1.setBackground(new java.awt.Color(255, 255, 204));
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("             MMMOO GYM'E HOŞGELDİN");
-        jLabel1.setPreferredSize(new java.awt.Dimension(500, 110));
-        jPanel3.add(jLabel1);
+        jLabel1.setText("Kullanıcı Adı");
+        kGradientPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 170, -1, -1));
 
-        jPanel1.add(jPanel3);
-
-        jPanel4.setBackground(new java.awt.Color(0, 102, 102));
-        jPanel4.setPreferredSize(new java.awt.Dimension(500, 75));
-
-        jButton1.setBackground(new java.awt.Color(255, 0, 51));
-        jButton1.setForeground(new java.awt.Color(204, 204, 204));
-        jButton1.setText("Kendimi Şanslı Hissediyorum...");
-        jButton1.setPreferredSize(new java.awt.Dimension(350, 27));
-        jButton1.setRequestFocusEnabled(false);
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        jPanel4.add(jButton1);
-
-        jPanel1.add(jPanel4);
-
-        jPanel6.setBackground(new java.awt.Color(0, 102, 102));
-        jPanel6.setPreferredSize(new java.awt.Dimension(500, 125));
-
-        jPanel7.setBackground(new java.awt.Color(0, 102, 102));
-        jPanel7.setPreferredSize(new java.awt.Dimension(500, 50));
-        jPanel7.setLayout(new java.awt.BorderLayout(0, 2));
-
-        jTextField2.setBackground(new java.awt.Color(255, 204, 204));
-        jTextField2.setPreferredSize(new java.awt.Dimension(64, 20));
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
-            }
-        });
-        jPanel7.add(jTextField2, java.awt.BorderLayout.CENTER);
-
-        jLabel2.setBackground(new java.awt.Color(255, 255, 204));
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Kullanıcı Adı");
-        jLabel2.setPreferredSize(new java.awt.Dimension(66, 22));
-        jPanel7.add(jLabel2, java.awt.BorderLayout.PAGE_START);
+        jLabel2.setText("Şifre");
+        kGradientPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 250, 50, -1));
 
-        jPanel6.add(jPanel7);
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-lock-30.png"))); // NOI18N
+        kGradientPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 280, -1, -1));
 
-        jPanel10.setBackground(new java.awt.Color(0, 102, 102));
-        jPanel10.setPreferredSize(new java.awt.Dimension(500, 50));
-        jPanel10.setLayout(new java.awt.BorderLayout(0, 2));
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-person-30.png"))); // NOI18N
+        kGradientPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 190, -1, -1));
 
-        jLabel3.setBackground(new java.awt.Color(255, 255, 204));
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Şifre");
-        jLabel3.setPreferredSize(new java.awt.Dimension(40, 22));
-        jPanel10.add(jLabel3, java.awt.BorderLayout.PAGE_START);
-
-        jPasswordField1.setBackground(new java.awt.Color(255, 204, 204));
-        jPasswordField1.setPreferredSize(new java.awt.Dimension(500, 22));
-        jPanel10.add(jPasswordField1, java.awt.BorderLayout.CENTER);
-
-        jPanel6.add(jPanel10);
-
-        jPanel1.add(jPanel6);
-
-        jPanel11.setBackground(new java.awt.Color(0, 102, 102));
-        jPanel11.setPreferredSize(new java.awt.Dimension(500, 75));
-
-        jCheckBox1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jCheckBox1.setForeground(new java.awt.Color(255, 255, 255));
-        jCheckBox1.setText("Bu hesabı hatırla");
-
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 102, 102));
-        jLabel4.setText("Şifreni mi unuttun ?");
-
-        javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
-        jPanel11.setLayout(jPanel11Layout);
-        jPanel11Layout.setHorizontalGroup(
-            jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel11Layout.createSequentialGroup()
-                .addComponent(jCheckBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 228, Short.MAX_VALUE)
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-        jPanel11Layout.setVerticalGroup(
-            jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel11Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jCheckBox1)
-                    .addComponent(jLabel4))
-                .addGap(28, 28, 28))
-        );
-
-        jPanel1.add(jPanel11);
-
-        jPanel12.setBackground(new java.awt.Color(0, 102, 102));
-        jPanel12.setPreferredSize(new java.awt.Dimension(500, 75));
-        jPanel12.setLayout(new javax.swing.BoxLayout(jPanel12, javax.swing.BoxLayout.LINE_AXIS));
-
-        jButton2.setBackground(new java.awt.Color(204, 204, 204));
-        jButton2.setLabel("GİRİŞ YAP");
-        jButton2.setPreferredSize(new java.awt.Dimension(100, 30));
-        jButton2.setRequestFocusEnabled(false);
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        kButton1.setText("Giriş ");
+        kButton1.setkBackGroundColor(new java.awt.Color(51, 51, 0));
+        kButton1.setkBorderRadius(25);
+        kButton1.setkEndColor(new java.awt.Color(204, 255, 204));
+        kButton1.setkHoverEndColor(new java.awt.Color(204, 204, 255));
+        kButton1.setkHoverForeGround(new java.awt.Color(255, 102, 255));
+        kButton1.setkHoverStartColor(new java.awt.Color(0, 204, 204));
+        kButton1.setkIndicatorColor(new java.awt.Color(153, 102, 255));
+        kButton1.setkSelectedColor(new java.awt.Color(204, 255, 204));
+        kButton1.setkStartColor(new java.awt.Color(204, 0, 51));
+        kButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                kButton1ActionPerformed(evt);
             }
         });
-        jPanel12.add(jButton2);
+        kGradientPanel1.add(kButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 350, 150, 30));
 
-        jPanel1.add(jPanel12);
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setText("MMOOO GYM");
+        kGradientPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 40, 250, 50));
 
-        getContentPane().add(jPanel1, java.awt.BorderLayout.WEST);
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-gym-100.png"))); // NOI18N
+        kGradientPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 20, 110, 100));
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(kGradientPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 710, Short.MAX_VALUE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(kGradientPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 441, Short.MAX_VALUE)
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void kGradientPanel1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kGradientPanel1KeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_kGradientPanel1KeyPressed
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    private void kGradientPanel1MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_kGradientPanel1MouseDragged
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+        //new Drag(kGradientPanel1).moveWindow(evt);
+    }//GEN-LAST:event_kGradientPanel1MouseDragged
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void kButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kButton1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_kButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -286,27 +178,15 @@ public class Login extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel10;
-    private javax.swing.JPanel jPanel11;
-    private javax.swing.JPanel jPanel12;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel6;
-    private javax.swing.JPanel jPanel7;
     private javax.swing.JPasswordField jPasswordField1;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jTextField3;
+    private com.k33ptoo.components.KButton kButton1;
+    private com.k33ptoo.components.KGradientPanel kGradientPanel1;
     // End of variables declaration//GEN-END:variables
 }

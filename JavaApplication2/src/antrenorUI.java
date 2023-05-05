@@ -1,7 +1,6 @@
 
-import java.util.HashSet;
-
 import javax.swing.JPanel;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -11,12 +10,12 @@ import javax.swing.JPanel;
  *
  * @author omera
  */
-public class managerrUI extends javax.swing.JFrame {
+public class antrenorUI extends javax.swing.JFrame {
 
     /**
-     * Creates new form secretaryUI
+     * Creates new form antrenorUI
      */
-    public managerrUI() {
+    public antrenorUI() {
         initComponents();
     }
 
@@ -49,9 +48,6 @@ public class managerrUI extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
 
-        setLocationByPlatform(true);
-        setUndecorated(true);
-
         jPanel8.setBackground(new java.awt.Color(255, 255, 255));
         jPanel8.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -62,7 +58,7 @@ public class managerrUI extends javax.swing.JFrame {
 
         jLabel9.setBackground(new java.awt.Color(51, 51, 51));
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-permanent-job-64.png"))); // NOI18N
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-trainer-64.png"))); // NOI18N
 
         jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 26)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
@@ -70,30 +66,30 @@ public class managerrUI extends javax.swing.JFrame {
 
         jLabel11.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel11.setText("Salon Sahibi Servisi");
+        jLabel11.setText("Antrenör ");
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+            .addGroup(jPanel6Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel6Layout.createSequentialGroup()
-                        .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 43, Short.MAX_VALUE)))
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 164, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
-                .addGap(16, 16, 16)
-                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(19, 19, 19)
+                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
                 .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -148,7 +144,7 @@ public class managerrUI extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(45, 118, 232));
-        jLabel2.setText("Rapor İnceleme ");
+        jLabel2.setText("Ders Programı Oluştur\n");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -160,9 +156,9 @@ public class managerrUI extends javax.swing.JFrame {
                         .addGap(46, 46, 46)
                         .addComponent(jLabel1))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(21, 21, 21)
+                        .addContainerGap()
                         .addComponent(jLabel2)))
-                .addContainerGap(29, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -170,8 +166,8 @@ public class managerrUI extends javax.swing.JFrame {
                 .addGap(29, 29, 29)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(102, Short.MAX_VALUE))
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(103, Short.MAX_VALUE))
         );
 
         jPanel8.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 270, 160, 250));
@@ -179,10 +175,10 @@ public class managerrUI extends javax.swing.JFrame {
         jPanel3.setBackground(java.awt.SystemColor.controlHighlight);
         jPanel3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jpanel3mousenter(evt);
+                jPanel3jpanel3mousenter(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                jpanel3exit(evt);
+                jPanel3jpanel3exit(evt);
             }
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 jPanel3MousePressed(evt);
@@ -223,10 +219,10 @@ public class managerrUI extends javax.swing.JFrame {
         jPanel4.setBackground(java.awt.SystemColor.controlHighlight);
         jPanel4.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jpanel4enter(evt);
+                jPanel4jpanel4enter(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                jpanel4exit(evt);
+                jPanel4jpanel4exit(evt);
             }
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 jPanel4MousePressed(evt);
@@ -237,19 +233,21 @@ public class managerrUI extends javax.swing.JFrame {
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(45, 118, 232));
-        jLabel6.setText("***");
+        jLabel6.setText("Arıza/Rapor Bildir");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel5)
-                .addGap(40, 40, 40))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addGap(0, 28, Short.MAX_VALUE)
-                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(16, Short.MAX_VALUE)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                        .addComponent(jLabel5)
+                        .addGap(40, 40, 40))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -281,20 +279,20 @@ public class managerrUI extends javax.swing.JFrame {
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(45, 118, 232));
-        jLabel8.setText("Personel Kayıtları");
+        jLabel8.setText("Ders Ekle / Sil");
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                .addContainerGap(14, Short.MAX_VALUE)
-                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGap(46, 46, 46)
                 .addComponent(jLabel7)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(51, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -329,16 +327,6 @@ public class managerrUI extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_exit0MousePressed
 
-    private void jPanel5MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel5MouseEntered
-    setColor(jPanel5);
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jPanel5MouseEntered
-
-    private void jPanel5MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel5MouseExited
-    resetColor(jPanel5);
-    // TODO add your handling code here:
-    }//GEN-LAST:event_jPanel5MouseExited
-
     private void jPanel2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MouseEntered
         setColor(jPanel2);    // TODO add your handling code here:
     }//GEN-LAST:event_jPanel2MouseEntered
@@ -347,43 +335,55 @@ public class managerrUI extends javax.swing.JFrame {
         resetColor(jPanel2);    // TODO add your handling code here:
     }//GEN-LAST:event_jPanel2MouseExited
 
-    private void jpanel3mousenter(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpanel3mousenter
-           setColor(jPanel3);      // TODO add your handling code here:
-    }//GEN-LAST:event_jpanel3mousenter
+    private void jPanel2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MousePressed
+        setVisible(false); //ilk paneli gizle
+        antrenorProgram frame2 = new antrenorProgram();
+        frame2.setVisible(true);
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jPanel2MousePressed
 
-    private void jpanel3exit(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpanel3exit
-            resetColor(jPanel3);      // TODO add your handling code here:
-    }//GEN-LAST:event_jpanel3exit
+    private void jPanel3jpanel3mousenter(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel3jpanel3mousenter
+        setColor(jPanel3);      // TODO add your handling code here:
+    }//GEN-LAST:event_jPanel3jpanel3mousenter
 
-    private void jpanel4enter(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpanel4enter
-               setColor(jPanel4);    // TODO add your handling code here:
-    }//GEN-LAST:event_jpanel4enter
+    private void jPanel3jpanel3exit(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel3jpanel3exit
+        resetColor(jPanel3);      // TODO add your handling code here:
+    }//GEN-LAST:event_jPanel3jpanel3exit
 
-    private void jpanel4exit(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpanel4exit
-               resetColor(jPanel4);        // TODO add your handling code here:
-    }//GEN-LAST:event_jpanel4exit
+    private void jPanel3MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel3MousePressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jPanel3MousePressed
+
+    private void jPanel4jpanel4enter(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel4jpanel4enter
+        setColor(jPanel4);    // TODO add your handling code here:
+    }//GEN-LAST:event_jPanel4jpanel4enter
+
+    private void jPanel4jpanel4exit(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel4jpanel4exit
+        resetColor(jPanel4);        // TODO add your handling code here:
+    }//GEN-LAST:event_jPanel4jpanel4exit
+
+    private void jPanel4MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel4MousePressed
+            setVisible(false); //ilk paneli gizle
+        arızaRaporOlustur frame2 = new arızaRaporOlustur();
+        frame2.setVisible(true);    // TODO add your handling code here:
+    }//GEN-LAST:event_jPanel4MousePressed
+
+    private void jPanel5MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel5MouseEntered
+        setColor(jPanel5);
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jPanel5MouseEntered
+
+    private void jPanel5MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel5MouseExited
+        resetColor(jPanel5);
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jPanel5MouseExited
 
     private void jPanel5MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel5MousePressed
         setVisible(false); //ilk paneli gizle
-    managerpersonel frame2 = new managerpersonel();
-    frame2.setVisible(true);
-   // TODO add your handling code here:
+        antrenorDers frame2 = new antrenorDers();
+        frame2.setVisible(true);
+        // TODO add your handling code here:
     }//GEN-LAST:event_jPanel5MousePressed
-
-    private void jPanel2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MousePressed
-        setVisible(false); //ilk paneli gizle
-    managerrapor frame2 = new managerrapor();
-    frame2.setVisible(true);
-    // TODO add your handling code here:
-    }//GEN-LAST:event_jPanel2MousePressed
-
-    private void jPanel3MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel3MousePressed
-   // TODO add your handling code here:
-    }//GEN-LAST:event_jPanel3MousePressed
-
-    private void jPanel4MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel4MousePressed
-    // TODO add your handling code here:
-    }//GEN-LAST:event_jPanel4MousePressed
     public void setColor(JPanel panel){
         panel.setBackground(new java.awt.Color(197,197,197));
     }
@@ -407,20 +407,20 @@ public class managerrUI extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(secretaryUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(antrenorUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(secretaryUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(antrenorUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(secretaryUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(antrenorUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(secretaryUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(antrenorUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new managerrUI().setVisible(true);
+                new antrenorUI().setVisible(true);
             }
         });
     }

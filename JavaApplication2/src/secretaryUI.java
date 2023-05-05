@@ -62,7 +62,7 @@ public class secretaryUI extends javax.swing.JFrame {
 
         jLabel9.setBackground(new java.awt.Color(51, 51, 51));
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-permanent-job-64.png"))); // NOI18N
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-secretary-66.png"))); // NOI18N
 
         jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 26)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
@@ -194,19 +194,20 @@ public class secretaryUI extends javax.swing.JFrame {
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(45, 118, 232));
-        jLabel4.setText(" Satış Raporları/ Analiz");
+        jLabel4.setText(" Satış Girdisi");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(46, 46, 46)
                 .addComponent(jLabel3)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(50, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -384,9 +385,9 @@ public class secretaryUI extends javax.swing.JFrame {
 
     private void jPanel4MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel4MousePressed
  
-    setVisible(false); //ilk paneli gizle
-    sektretersikayet frame2 = new sektretersikayet();
-    frame2.setVisible(true); //ikinci paneli göster    // TODO add your handling code here:
+             setVisible(false); //ilk paneli gizle
+        arızaRaporOlustur frame2 = new arızaRaporOlustur();
+        frame2.setVisible(true);  //ikinci paneli göster    // TODO add your handling code here:
     }//GEN-LAST:event_jPanel4MousePressed
     public void setColor(JPanel panel){
         panel.setBackground(new java.awt.Color(197,197,197));
