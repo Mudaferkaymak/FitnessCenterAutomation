@@ -1,4 +1,16 @@
+ import java.sql.*;/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
+ */
+import javax.swing.JOptionPane;
+/**
+ *
+ * @author omera
+ */
 
+
+    
+ 
 import java.awt.Color;
 
 /*
@@ -140,6 +152,56 @@ public class Login extends javax.swing.JFrame {
 
     private void kButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kButton1ActionPerformed
         // TODO add your handling code here:
+        // TODO add your handling code here:
+            String userName = jTextField3.getText();
+            String password = jPasswordField1.getText();
+
+            try {
+                Class.forName("com.mysql.cj.jdbc.Driver");
+                Connection con = DriverManager.getConnection(
+                    "jdbc:mysql://aws.connect.psdb.cloud/mmooodatabase?sslMode=VERIFY_IDENTITY",
+                    "enq8p0j5ciweyw1gsfrg",
+                    "pscale_pw_2QyPbaQViAG5k6JgsBdbvKXkBkeGi6h8OKgMWImpieg"
+                );
+
+                Statement stmt = con.createStatement();
+                ResultSet rs = stmt.executeQuery("SELECT isim,password,pozisyon FROM Personel");
+                boolean validLogin = false; // flag değişkeni
+
+                while (rs.next()) {
+                    String dataName = rs.getString("isim");
+                    String passName = rs.getString("password");
+                    String position = rs.getString("pozisyon");
+                    System.out.println(position);
+
+                    if (userName.equals(dataName) && password.equals(passName)) {
+                        if (position.equals("0")) {
+                            setVisible(false);
+                            secretaryUI frame2 = new secretaryUI();
+                            frame2.setVisible(true);
+                        } /*else if (position.equals("1")) {
+                            setVisible(false);
+                            antrenorUI frame2 = new antrenorUI();
+                            frame2.setVisible(true);
+                        }*/ else if (position.equals("2")) {
+                            setVisible(false);
+                            managerrUI frame2 = new managerrUI();
+                            frame2.setVisible(true);
+                        }
+                        validLogin = true;
+                        break;
+                    }
+                }
+
+                if (!validLogin) { // flag değişkeni kullanarak uyarı mesajı verme
+                    JOptionPane.showMessageDialog(null, "Kullanıcı adı ya da şifreyi yanlış girdiniz\nLütfen tekrar deneyin");
+                }
+
+                con.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
     }//GEN-LAST:event_kButton1ActionPerformed
 
     /**

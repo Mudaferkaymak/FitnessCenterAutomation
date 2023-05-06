@@ -1,4 +1,4 @@
-
+import java.sql.*;
 import java.util.HashSet;
 
 import javax.swing.JPanel;
@@ -364,8 +364,24 @@ public class secretaryUI extends javax.swing.JFrame {
 
     private void jPanel5MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel5MousePressed
     setVisible(false); //ilk paneli gizle
-    sekretetabone frame2 = new sekretetabone();
-    frame2.setVisible(true);
+    //sekretetabone frame2 = new sekretetabone();
+    
+    //frame2.setVisible(true);
+        try {
+
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+
+            }
+        });
+
+        sekretetabone myForm = new sekretetabone();
+        myForm.setVisible(true);
+
+        myForm.displayUsers();
+    } catch (SQLException ex) {
+        java.util.logging.Logger.getLogger(sekretetabone.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+    }
     // TODO add your handling code here:
     }//GEN-LAST:event_jPanel5MousePressed
 

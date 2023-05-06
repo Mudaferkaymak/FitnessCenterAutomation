@@ -1,3 +1,7 @@
+ import java.awt.BorderLayout;
+import java.sql.*;
+import javax.swing.*;
+import javax.swing.table.*;
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -336,37 +340,84 @@ public class sekretetabone extends javax.swing.JFrame {
     }
     /**
      * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(sekretetabone.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(sekretetabone.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(sekretetabone.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(sekretetabone.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
+     */public static void main(String args[]) {
 
-        /* Create and display the form */
+    // ...
+
+    try {
+        // Look and feel setting code
+
+        // Create and display the form
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new sekretetabone().setVisible(true);
+                
+             //   new sekretetabone().setVisible(true);
             }
         });
+
+        // Call displayUsers() function
+        sekretetabone myForm = new sekretetabone();
+        myForm.setVisible(true);
+
+        // Call displayUsers() function on the existing form
+        myForm.displayUsers();
+    } catch (SQLException ex) {
+        java.util.logging.Logger.getLogger(sekretetabone.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+    } 
+}
+    public void displayUsers() throws SQLException {
+            JTable table = new JTable();
+            DefaultTableModel model = new DefaultTableModel();
+            table.setModel(model);
+
+            try {
+                Class.forName("com.mysql.cj.jdbc.Driver");
+            } catch (ClassNotFoundException ex) {
+                JOptionPane.showMessageDialog(this, ex);
+                System.out.println("hata");
+            }
+            Connection Con = DriverManager.getConnection(
+                    "jdbc:mysql://aws.connect.psdb.cloud/mmooodatabase?sslMode=VERIFY_IDENTITY",
+                    "enq8p0j5ciweyw1gsfrg",
+                    "pscale_pw_2QyPbaQViAG5k6JgsBdbvKXkBkeGi6h8OKgMWImpieg");
+
+            Statement st = Con.createStatement();
+            ResultSet rs = st.executeQuery("SELECT isim,uyelikTarihi,abonelikBitis,TC FROM Musteri");
+
+            ResultSetMetaData metaData = rs.getMetaData();
+            int columnCount = metaData.getColumnCount();
+            String[] columnNames = new String[columnCount];
+            for (int i = 1; i <= columnCount; i++) {
+                columnNames[i - 1] = metaData.getColumnName(i);
+                System.out.println(columnNames[i-1]);
+            }
+
+            // DefaultTableModel nesnesini oluştur ve sütun bilgilerini ekle
+            DefaultTableModel tableModel = new DefaultTableModel(columnNames, 0);
+
+            // ResultSet nesnesinden verileri tabloya ekle
+            while (rs.next()) {
+                Object[] row = new Object[columnCount];
+                for (int i = 1; i <= columnCount; i++) {
+                    row[i - 1] = rs.getObject(i);
+                }
+                tableModel.addRow(row);
+            }
+
+            // JTable nesnesini oluştur ve verileri ekleyerek göster
+          //  table.setModel(tableModel);
+            jTable1.setModel(tableModel);
+           //  JOptionPane.showMessageDialog(null, new JScrollPane(table), "Table", JOptionPane.PLAIN_MESSAGE);
+            // JPanel nesnesini oluştur ve JTable'i JScrollPane'e yerleştir
+            /*JPanel panel = new JPanel(new BorderLayout());
+            jPanel1.add(new JScrollPane(table), BorderLayout.CENTER);
+
+            // Bu JPanel nesnesini kullanıcı arabiriminizdeki uygun yere yerleştirin
+            jPanel1.add(panel);*/
+                 rs.close();
+                 st.close();
+                 Con.close();    
+
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
