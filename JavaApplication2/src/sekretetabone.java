@@ -315,12 +315,12 @@ public class sekretetabone extends javax.swing.JFrame {
     }//GEN-LAST:event_jPanel5MousePressed
 
     private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
-        sekreterMusteriEkle frame = new sekreterMusteriEkle();
+        sekreterMusteriSil frame = new sekreterMusteriSil();
     frame.show();    // TODO add your handling code here:
     }//GEN-LAST:event_jButton3MouseClicked
 
     private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
-        sekreterMusteriSil frame = new sekreterMusteriSil();
+        sekreterMusteriEkle frame = new sekreterMusteriEkle();
     frame.show();    // TODO add your handling code here:
     }//GEN-LAST:event_jButton2MouseClicked
 
