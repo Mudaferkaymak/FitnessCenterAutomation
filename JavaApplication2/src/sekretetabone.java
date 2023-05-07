@@ -1,4 +1,3 @@
- import java.awt.BorderLayout;
 import java.sql.*;
 import javax.swing.*;
 import javax.swing.table.*;
@@ -151,6 +150,7 @@ public class sekretetabone extends javax.swing.JFrame {
         });
         jTable1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jTable1.setEnabled(false);
+        jTable1.setFocusable(false);
         jScrollPane1.setViewportView(jTable1);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -319,12 +319,28 @@ public class sekretetabone extends javax.swing.JFrame {
     }//GEN-LAST:event_jPanel5MousePressed
 
     private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
-        sekreterMusteriEkle frame = new sekreterMusteriEkle();
-    frame.show();    // TODO add your handling code here:
+        
+        
+        try {
+
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+
+            }
+        });
+
+        sekreterMusteriSil frame = new sekreterMusteriSil();
+        frame.show();
+
+        frame.displayUsers();
+    } catch (SQLException ex) {
+        java.util.logging.Logger.getLogger(sekretetabone.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+    }
+    // TODO add your handling code here:
     }//GEN-LAST:event_jButton3MouseClicked
 
     private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
-        sekreterMusteriSil frame = new sekreterMusteriSil();
+        sekreterMusteriEkle frame = new sekreterMusteriEkle();
     frame.show();    // TODO add your handling code here:
     }//GEN-LAST:event_jButton2MouseClicked
 
@@ -389,7 +405,7 @@ public class sekretetabone extends javax.swing.JFrame {
             String[] columnNames = new String[columnCount];
             for (int i = 1; i <= columnCount; i++) {
                 columnNames[i - 1] = metaData.getColumnName(i);
-                System.out.println(columnNames[i-1]);
+                //System.out.println(columnNames[i-1]);
             }
 
             // DefaultTableModel nesnesini oluştur ve sütun bilgilerini ekle
