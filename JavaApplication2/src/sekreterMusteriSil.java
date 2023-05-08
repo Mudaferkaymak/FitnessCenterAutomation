@@ -108,7 +108,7 @@ public class sekreterMusteriSil extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Müşteri Listesi");
 
-        kButton1.setText("Kaydet");
+        kButton1.setText("Sil");
         kButton1.setkBackGroundColor(new java.awt.Color(204, 255, 204));
         kButton1.setkEndColor(new java.awt.Color(102, 204, 255));
         kButton1.setkHoverForeGround(new java.awt.Color(153, 204, 255));
@@ -200,10 +200,8 @@ public class sekreterMusteriSil extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel4MouseClicked
 
     private void kButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kButton1ActionPerformed
-       System.out.println("sekreterMusteriSil.kButton1ActionPerformed()");
         String tcNo = jTextField2.getText();
         try {
-            System.out.println("sekreterMusteriSil.kButton1ActionPerformed()");
             // Veritabanı bağlantısı oluşturma
             Connection con = DriverManager.getConnection(
                     "jdbc:mysql://aws.connect.psdb.cloud/mmooodatabase?sslMode=VERIFY_IDENTITY",
@@ -218,14 +216,14 @@ public class sekreterMusteriSil extends javax.swing.JFrame {
             
             int sonuc = preparedStatement.executeUpdate();
             if (sonuc > 0) {
-                System.out.println("Veri başarıyla silindi!");
+                JOptionPane.showMessageDialog(null, "Musteri Silindi ");
             } else {
-                System.out.println("Veri silinirken bir hata oluştu.");
+                JOptionPane.showMessageDialog(null, "Musteri silinirken bir hata oluştu ");
             }
-
         } catch (SQLException e) {
             System.out.println("Veritabanı hatası oluştu: " + e.getMessage());
         }
+        
     }//GEN-LAST:event_kButton1ActionPerformed
     
     /**
