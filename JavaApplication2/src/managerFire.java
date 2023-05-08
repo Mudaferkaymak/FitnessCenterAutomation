@@ -1,6 +1,6 @@
-
+import javax.swing.JOptionPane;
 import java.awt.Color;
-
+import java.sql.*;
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -57,6 +57,11 @@ public class managerFire extends javax.swing.JFrame {
         jButton1.setText("İşlemi Tamamla");
         jButton1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jButton1.setOpaque(false);
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
@@ -122,6 +127,54 @@ public class managerFire extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        String tc = jTextField1.getText();
+        String telNum = jTextField2.getText();
+        try {
+            // create the mysql database connection
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            // create the mysql delete statement.
+            // i'm deleting the row where the id is "3", which corresponds to my
+            // "Barney Rubble" record.
+            try (Connection conn = DriverManager.getConnection(
+                    "jdbc:mysql://aws.connect.psdb.cloud/mmooodatabase?sslMode=VERIFY_IDENTITY",
+                    "enq8p0j5ciweyw1gsfrg",
+                    "pscale_pw_2QyPbaQViAG5k6JgsBdbvKXkBkeGi6h8OKgMWImpieg"
+            )) {
+                // create the mysql delete statement.
+                // i'm deleting the row where the id is "3", which corresponds to my
+                // "Barney Rubble" record.
+                String query = "delete from Personel where ID = ?";
+                PreparedStatement preparedStmt = conn.prepareStatement(query);
+                preparedStmt.setString(1, tc);
+
+                // execute the preparedstatement
+                int affectedRows = preparedStmt.executeUpdate();
+                if (affectedRows == 0) {
+                    // Silme işlemi başarısız oldu, kullanıcıya hata mesajı göster
+                    JOptionPane.showMessageDialog(null, "Silme işlemi başarısız oldu. Verilen TC numarasına ait kayıt bulunamadı.");
+                } else {
+                    // Silme işlemi başarılı oldu, ikinci paneli göster
+                    JOptionPane.showMessageDialog(null, "Silme işlemi başarılı oldu.");
+                    conn.close(); 
+                    setVisible(false); //ilk paneli gizle
+                    managerrUI frame2 = new managerrUI();
+                    frame2.setVisible(true); //ikinci paneli göster
+                }
+            }
+        } catch (SQLException ex) {
+            // SQL hatası oluştu, kullanıcıya hata mesajı göster
+            JOptionPane.showMessageDialog(null, "Silme işlemi sırasında bir hata oluştu: " + ex.getMessage());
+        } catch (Exception e) {
+            // Genel bir hata oluştu, kullanıcıya hata mesajı göster
+            JOptionPane.showMessageDialog(null, "Beklenmedik bir hata oluştu: " + e.getMessage());
+        }
+      // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+
+
 
     /**
      * @param args the command line arguments
