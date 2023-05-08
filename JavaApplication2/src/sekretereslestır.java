@@ -58,6 +58,7 @@ public class sekretereslestır extends javax.swing.JFrame {
         mtc.setOpaque(false);
         kGradientPanel1.add(mtc, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 110, 134, -1));
 
+        jButton1.setBackground(new java.awt.Color(204, 255, 255));
         jButton1.setText("İşlemi Tamamla");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

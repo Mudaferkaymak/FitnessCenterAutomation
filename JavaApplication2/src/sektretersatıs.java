@@ -175,6 +175,8 @@ public class sektretersatıs extends javax.swing.JFrame {
 
         jLabel8.setText("Kreatin");
         jPanel3.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(493, 109, 50, -1));
+
+        jTextField4.setText(Integer.toString(kreatincounter));
         jPanel3.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 210, 80, -1));
 
         jButton5.setBackground(new java.awt.Color(45, 118, 232));
