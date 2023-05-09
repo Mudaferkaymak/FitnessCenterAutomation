@@ -179,11 +179,11 @@ public class Login extends javax.swing.JFrame {
                             setVisible(false);
                             secretaryUI frame2 = new secretaryUI();
                             frame2.setVisible(true);
-                        } /*else if (position.equals("1")) {
+                        } else if (position.equals("1")) {
                             setVisible(false);
                             antrenorUI frame2 = new antrenorUI();
                             frame2.setVisible(true);
-                        }*/ else if (position.equals("2")) {
+                        } else if (position.equals("2")) {
                             setVisible(false);
                             managerrUI frame2 = new managerrUI();
                             frame2.setVisible(true);
