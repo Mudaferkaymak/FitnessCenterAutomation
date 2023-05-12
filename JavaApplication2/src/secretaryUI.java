@@ -363,21 +363,13 @@ public class secretaryUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jpanel4exit
 
     private void jPanel5MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel5MousePressed
-    setVisible(false); //ilk paneli gizle
-    //sekretetabone frame2 = new sekretetabone();
-    
-    //frame2.setVisible(true);
-        try {
-
+    setVisible(false); 
+    try {
         java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-
-            }
+            public void run() {}
         });
-
         sekretetabone myForm = new sekretetabone();
         myForm.setVisible(true);
-
         myForm.displayUsers();
     } catch (SQLException ex) {
         java.util.logging.Logger.getLogger(sekretetabone.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
@@ -393,15 +385,13 @@ public class secretaryUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jPanel2MousePressed
 
     private void jPanel3MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel3MousePressed
-
     setVisible(false); //ilk paneli gizle
     sektretersatıs frame2 = new sektretersatıs();
     frame2.setVisible(true);
     }//GEN-LAST:event_jPanel3MousePressed
 
     private void jPanel4MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel4MousePressed
- 
-             setVisible(false); //ilk paneli gizle
+        setVisible(false); //ilk paneli gizle
         arızaRaporOlustur frame2 = new arızaRaporOlustur();
         frame2.setVisible(true);  //ikinci paneli göster    // TODO add your handling code here:
     }//GEN-LAST:event_jPanel4MousePressed
