@@ -273,6 +273,7 @@ public class sekreterMusteriEkle extends javax.swing.JFrame {
         String telNo = jTextField4.getText();
         String telNo2 = jTextField5.getText();
         String blood = jTextField6.getText();
+        String age = jTextField7.getText();
         java.sql.Date date = new java.sql.Date(new java.util.Date().getTime());
         try {
                 Class.forName("com.mysql.cj.jdbc.Driver");
@@ -294,7 +295,7 @@ public class sekreterMusteriEkle extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Musteri bulunmaktadir ");
             }else{
                 Statement st = con.createStatement();
-                String sql = "INSERT INTO Musteri (isim, soyisim, uyelikTarihi, TC, abonelikBitis, telNo, acilDurumIletisim, kanGrubu, yas) VALUES ('" + name + "', '" + surName + "', '" + date + "', '" + tcNo + "', '" + memberShip +"', '" + telNo +"', '" + telNo2 +"', '" + blood +"', ' 35')";
+                String sql = "INSERT INTO Musteri (isim, soyisim, uyelikTarihi, TC, abonelikBitis, telNo, acilDurumIletisim, kanGrubu, yas) VALUES ('"+ name + "', '" + surName + "', '" + date + "', '" + tcNo + "', '" + memberShip +"', '" + telNo +"', '" + telNo2 +"', '" + blood +"', '" +age +"')";
                 st.executeUpdate(sql);
                 JOptionPane.showMessageDialog(null, "Musteri eklendi ");
             }
