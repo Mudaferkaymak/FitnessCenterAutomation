@@ -252,43 +252,34 @@ public class sekreterMusteriSil extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(sekreterMusteriEkle.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {}
+        });
         try {
-        // Look and feel setting code
-
-        // Create and display the form
-            java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                
-            }
-            });
-
-        // Call displayUsers() function
             sekreterMusteriSil myForm1 = new sekreterMusteriSil();
             myForm1.setVisible(true);
-
-            // Call displayUsers() function on the existing form
             myForm1.displayUsers();
         } catch (SQLException ex) {
-        java.util.logging.Logger.getLogger(sekreterMusteriSil.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(sekreterMusteriSil.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } 
     }
     
     public void displayUsers() throws SQLException {
-            JTable table = new JTable();
-            DefaultTableModel model = new DefaultTableModel();
-            table.setModel(model);
+        JTable table = new JTable();
+        DefaultTableModel model = new DefaultTableModel();
+        table.setModel(model);
 
-            try {
+        try {
                 Class.forName("com.mysql.cj.jdbc.Driver");
-            } catch (ClassNotFoundException ex) {
+        } catch (ClassNotFoundException ex) {
                 JOptionPane.showMessageDialog(this, ex);
                 System.out.println("hata");
             }
-            Connection Con = DriverManager.getConnection(
-                    "jdbc:mysql://aws.connect.psdb.cloud/mmooodatabase?sslMode=VERIFY_IDENTITY",
-                    "enq8p0j5ciweyw1gsfrg",
-                    "pscale_pw_2QyPbaQViAG5k6JgsBdbvKXkBkeGi6h8OKgMWImpieg");
-
+        try (Connection Con = DriverManager.getConnection(
+                "jdbc:mysql://aws.connect.psdb.cloud/mmooodatabase?sslMode=VERIFY_IDENTITY",
+                "enq8p0j5ciweyw1gsfrg",
+                "pscale_pw_2QyPbaQViAG5k6JgsBdbvKXkBkeGi6h8OKgMWImpieg")) {
             Statement st = Con.createStatement();
             ResultSet rs = st.executeQuery("SELECT isim, soyisim, TC, abonelikBitis FROM Musteri");
             ResultSetMetaData metaData = rs.getMetaData();
@@ -306,9 +297,9 @@ public class sekreterMusteriSil extends javax.swing.JFrame {
                 tableModel.addRow(row);
             }
             jTable1.setModel(tableModel);
-                 rs.close();
-                 st.close();
-                 Con.close();
+            rs.close();
+            st.close();
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
