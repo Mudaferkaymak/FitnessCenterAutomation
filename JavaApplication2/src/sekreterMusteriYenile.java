@@ -1,6 +1,12 @@
 
+import com.sun.jdi.connect.spi.Connection;
 import java.awt.Color;
-
+import java.sql.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -79,12 +85,22 @@ public class sekreterMusteriYenile extends javax.swing.JFrame {
         kButton1.setkHoverStartColor(new Color(0,0,0,0));
         kButton1.setkPressedColor(new java.awt.Color(102, 102, 102));
         kButton1.setkSelectedColor(new java.awt.Color(204, 255, 255));
+        kButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                kButton1ActionPerformed(evt);
+            }
+        });
 
         jComboBox1.setBackground(new Color(0,0,0,0));
         jComboBox1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jComboBox1.setForeground(new java.awt.Color(255, 255, 255));
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Üyelik Uzatma(ay)", "Telefon Numarası", "Acil Erişim Tel. No.su", " " }));
         jComboBox1.setOpaque(false);
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
 
         jTextField7.setBackground(new Color(0,0,0,0));
         jTextField7.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(255, 255, 255)));
@@ -202,9 +218,53 @@ public class sekreterMusteriYenile extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jLabel4MouseClicked
 
-    /**
-     * @param args the command line arguments
-     */
+    private void kButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kButton1ActionPerformed
+        String tcNo = jTextField7.getText();
+        String newS = jTextField6.getText();
+        try {
+            java.sql.Connection con = DriverManager.getConnection(
+                    "jdbc:mysql://aws.connect.psdb.cloud/mmooodatabase?sslMode=VERIFY_IDENTITY",
+                    "enq8p0j5ciweyw1gsfrg",
+                    "pscale_pw_2QyPbaQViAG5k6JgsBdbvKXkBkeGi6h8OKgMWImpieg");
+            
+            String sql1 = "SELECT CASE WHEN COUNT(*) > 0 THEN 1 ELSE 0 END AS result FROM Musteri WHERE TC = '" + tcNo + "'";
+            Statement stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery(sql1);
+            rs.next();
+            int result = rs.getInt("result");
+            if (result==1) {
+                int selectedIndex = jComboBox1.getSelectedIndex();
+                String choice;
+                switch (selectedIndex) {
+                    case 0 -> {
+                        choice = "abonelikBitis";
+                    }
+                    case 1 -> {
+                        choice = "telNo";
+                    }
+                    case 2 -> {
+                        choice = "acilDurumIletisim";
+                    }
+                    default -> {
+                        choice = "abonelikBitis";
+                    }
+                }
+                String sql2 = "UPDATE Musteri SET " + choice + " = " + newS + " WHERE TC = "+ tcNo;
+                Statement stmt1 = con.createStatement();
+                stmt1.executeUpdate(sql2);
+                JOptionPane.showMessageDialog(null, "Musteri bilgisi guncellendi");
+            } else {
+                JOptionPane.showMessageDialog(null, "Musteri mevcut değil");
+            }
+        } catch (SQLException e) {
+            Logger.getLogger(sekreterMusteriYenile.class.getName()).log(Level.SEVERE, null, e);
+        }
+    }//GEN-LAST:event_kButton1ActionPerformed
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+    }//GEN-LAST:event_jComboBox1ActionPerformed
+
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -235,8 +295,52 @@ public class sekreterMusteriYenile extends javax.swing.JFrame {
                 new sekreterMusteriYenile().setVisible(true);
             }
         });
+        try {
+            sekreterMusteriYenile myForm1 = new sekreterMusteriYenile();
+            myForm1.setVisible(true);
+            myForm1.displayUsers();
+        } catch (SQLException ex) {
+            java.util.logging.Logger.getLogger(sekreterMusteriYenile.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } 
     }
 
+        
+    public void displayUsers() throws SQLException {
+        JTable table = new JTable();
+        DefaultTableModel model = new DefaultTableModel();
+        table.setModel(model);
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+        } catch (ClassNotFoundException ex) {
+            JOptionPane.showMessageDialog(this, ex);
+            System.out.println("hata");
+        }
+        try (java.sql.Connection Con = DriverManager.getConnection(
+                "jdbc:mysql://aws.connect.psdb.cloud/mmooodatabase?sslMode=VERIFY_IDENTITY",
+                "enq8p0j5ciweyw1gsfrg",
+                "pscale_pw_2QyPbaQViAG5k6JgsBdbvKXkBkeGi6h8OKgMWImpieg")) {
+            Statement st = Con.createStatement();
+            ResultSet rs = st.executeQuery("SELECT isim, soyisim, TC FROM Musteri");
+            ResultSetMetaData metaData = rs.getMetaData();
+            int columnCount = metaData.getColumnCount();
+            String[] columnNames = new String[columnCount];
+            for (int i = 1; i <= columnCount; i++) {
+                columnNames[i - 1] = metaData.getColumnName(i);
+            }
+            DefaultTableModel tableModel = new DefaultTableModel(columnNames, 0);
+            while (rs.next()) {
+                Object[] row = new Object[columnCount];
+                for (int i = 1; i <= columnCount; i++) {
+                    row[i - 1] = rs.getObject(i);
+                }
+                tableModel.addRow(row);
+            }
+            jTable1.setModel(tableModel);
+            rs.close();
+            st.close();
+        }
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
