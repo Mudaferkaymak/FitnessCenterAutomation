@@ -319,34 +319,34 @@ public class sekretetabone extends javax.swing.JFrame {
     }//GEN-LAST:event_jPanel5MousePressed
 
     private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
-        
-        
         try {
-
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-
-            }
-        });
-
-        sekreterMusteriSil frame = new sekreterMusteriSil();
-        frame.show();
-
-        frame.displayUsers();
-    } catch (SQLException ex) {
-        java.util.logging.Logger.getLogger(sekretetabone.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-    }
-    // TODO add your handling code here:
+            java.awt.EventQueue.invokeLater(new Runnable() {
+                public void run() {}
+            });
+            sekreterMusteriSil frame = new sekreterMusteriSil();
+            frame.show();
+            frame.displayUsers();
+        } catch (SQLException ex) {
+            java.util.logging.Logger.getLogger(sekretetabone.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jButton3MouseClicked
 
     private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
         sekreterMusteriEkle frame = new sekreterMusteriEkle();
-    frame.show();    // TODO add your handling code here:
+        frame.show();
     }//GEN-LAST:event_jButton2MouseClicked
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+        try {
+            java.awt.EventQueue.invokeLater(new Runnable() {
+                public void run() {}
+            });
             sekreterMusteriYenile frame = new sekreterMusteriYenile();
-    frame.show();      // TODO add your handling code here:
+            frame.show();
+            frame.displayUsers();
+        } catch (SQLException ex) {
+            java.util.logging.Logger.getLogger(sekreterMusteriYenile.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jButton1MouseClicked
         public void setColor(JPanel panel){
         panel.setBackground(new java.awt.Color(197,197,197));
