@@ -253,28 +253,7 @@ public class sekreterMusteriEkle extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jLabel4MouseClicked
 
-    private void kButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kButton1ActionPerformed
-        String fullName  = jTextField1.getText();
-        
-        String[] words = fullName.split(" ");
-        String name = "";
-        String surName = "";
-        if (words.length > 1) {
-            for (int i = 0; i < words.length - 1; i++) {
-                name += words[i] + " ";
-            }
-            surName = words[words.length - 1];
-        }else{
-            name += fullName;
-        }
-        
-        String tcNo = jTextField2.getText();
-        String memberShip = jTextField3.getText();
-        String telNo = jTextField4.getText();
-        String telNo2 = jTextField5.getText();
-        String blood = jTextField6.getText();
-        String age = jTextField7.getText();
-        java.sql.Date date = new java.sql.Date(new java.util.Date().getTime());
+    public void addCustomerDatabase(String name, String surName, String tcNo, String memberShip, String telNo, String telNo2, String blood, String age, java.sql.Date date){
         try {
                 Class.forName("com.mysql.cj.jdbc.Driver");
         } catch (ClassNotFoundException ex) {
@@ -303,7 +282,32 @@ public class sekreterMusteriEkle extends javax.swing.JFrame {
         } catch (SQLException ex) {
             Logger.getLogger(sekreterMusteriEkle.class.getName()).log(Level.SEVERE, null, ex);
         }
-
+    }
+    
+    private void kButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kButton1ActionPerformed
+        String fullName  = jTextField1.getText();
+        
+        String[] words = fullName.split(" ");
+        String name = "";
+        String surName = "";
+        if (words.length > 1) {
+            for (int i = 0; i < words.length - 1; i++) {
+                name += words[i] + " ";
+            }
+            surName = words[words.length - 1];
+        }else{
+            name += fullName;
+        }
+        
+        String tcNo = jTextField2.getText();
+        String memberShip = jTextField3.getText();
+        String telNo = jTextField4.getText();
+        String telNo2 = jTextField5.getText();
+        String blood = jTextField6.getText();
+        String age = jTextField7.getText();
+        java.sql.Date date = new java.sql.Date(new java.util.Date().getTime());
+        
+        addCustomerDatabase(name, surName, tcNo, memberShip, telNo, telNo2, blood, age, date);
 
     }//GEN-LAST:event_kButton1ActionPerformed
 
