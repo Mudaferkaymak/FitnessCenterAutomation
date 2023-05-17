@@ -218,38 +218,21 @@ public class sekreterMusteriYenile extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jLabel4MouseClicked
 
-    private void kButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kButton1ActionPerformed
-        String tcNo = jTextField7.getText();
-        String newS = jTextField6.getText();
+    public void updateCustomerDatabase(String TC, String choice, String newS){
         try {
             java.sql.Connection con = DriverManager.getConnection(
                     "jdbc:mysql://aws.connect.psdb.cloud/mmooodatabase?sslMode=VERIFY_IDENTITY",
                     "enq8p0j5ciweyw1gsfrg",
                     "pscale_pw_2QyPbaQViAG5k6JgsBdbvKXkBkeGi6h8OKgMWImpieg");
             
-            String sql1 = "SELECT CASE WHEN COUNT(*) > 0 THEN 1 ELSE 0 END AS result FROM Musteri WHERE TC = '" + tcNo + "'";
+            String sql1 = "SELECT CASE WHEN COUNT(*) > 0 THEN 1 ELSE 0 END AS result FROM Musteri WHERE TC = '" + TC + "'";
             Statement stmt = con.createStatement();
             ResultSet rs = stmt.executeQuery(sql1);
             rs.next();
             int result = rs.getInt("result");
             if (result==1) {
-                int selectedIndex = jComboBox1.getSelectedIndex();
-                String choice;
-                switch (selectedIndex) {
-                    case 0 -> {
-                        choice = "abonelikBitis";
-                    }
-                    case 1 -> {
-                        choice = "telNo";
-                    }
-                    case 2 -> {
-                        choice = "acilDurumIletisim";
-                    }
-                    default -> {
-                        choice = "abonelikBitis";
-                    }
-                }
-                String sql2 = "UPDATE Musteri SET " + choice + " = " + newS + " WHERE TC = "+ tcNo;
+                
+                String sql2 = "UPDATE Musteri SET " + choice + " = " + newS + " WHERE TC = "+ TC;
                 Statement stmt1 = con.createStatement();
                 stmt1.executeUpdate(sql2);
                 JOptionPane.showMessageDialog(null, "Musteri bilgisi guncellendi");
@@ -259,6 +242,28 @@ public class sekreterMusteriYenile extends javax.swing.JFrame {
         } catch (SQLException e) {
             Logger.getLogger(sekreterMusteriYenile.class.getName()).log(Level.SEVERE, null, e);
         }
+    }
+    
+    private void kButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kButton1ActionPerformed
+        String tcNo = jTextField7.getText();
+        String newS = jTextField6.getText();
+        int selectedIndex = jComboBox1.getSelectedIndex();
+        String choice;
+        switch (selectedIndex) {
+            case 0 -> {
+                choice = "abonelikBitis";
+            }
+            case 1 -> {
+                choice = "telNo";
+            }
+            case 2 -> {
+                choice = "acilDurumIletisim";
+            }
+            default -> {
+                choice = "abonelikBitis";
+            }
+        }
+        updateCustomerDatabase(tcNo, choice, newS);
     }//GEN-LAST:event_kButton1ActionPerformed
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed

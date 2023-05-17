@@ -150,43 +150,41 @@ public class Login extends javax.swing.JFrame {
         //new Drag(kGradientPanel1).moveWindow(evt);
     }//GEN-LAST:event_kGradientPanel1MouseDragged
 
-    private void kButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kButton1ActionPerformed
-        // TODO add your handling code here:
-        // TODO add your handling code here:
-            String userName = jTextField3.getText();
-            String password = jPasswordField1.getText();
-
-            try {
-                Class.forName("com.mysql.cj.jdbc.Driver");
-                Connection con = DriverManager.getConnection(
+    public void findFromDatabase(String userName, String password){
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            try (Connection con = DriverManager.getConnection(
                     "jdbc:mysql://aws.connect.psdb.cloud/mmooodatabase?sslMode=VERIFY_IDENTITY",
                     "enq8p0j5ciweyw1gsfrg",
                     "pscale_pw_2QyPbaQViAG5k6JgsBdbvKXkBkeGi6h8OKgMWImpieg"
-                );
-
+            )) {
                 Statement stmt = con.createStatement();
                 ResultSet rs = stmt.executeQuery("SELECT isim,password,pozisyon FROM Personel");
-                boolean validLogin = false; // flag değişkeni
-
+                boolean validLogin = false;
                 while (rs.next()) {
                     String dataName = rs.getString("isim");
                     String passName = rs.getString("password");
                     String position = rs.getString("pozisyon");
                     System.out.println(position);
-
                     if (userName.equals(dataName) && password.equals(passName)) {
-                        if (position.equals("0")) {
-                            setVisible(false);
-                            secretaryUI frame2 = new secretaryUI();
-                            frame2.setVisible(true);
-                        } else if (position.equals("1")) {
-                            setVisible(false);
-                            antrenorUI frame2 = new antrenorUI();
-                            frame2.setVisible(true);
-                        } else if (position.equals("2")) {
-                            setVisible(false);
-                            managerrUI frame2 = new managerrUI();
-                            frame2.setVisible(true);
+                        switch (position) {
+                            case "0" ->                             {
+                                setVisible(false);
+                                secretaryUI frame2 = new secretaryUI();
+                                frame2.setVisible(true);
+                            }
+                            case "1" ->                             {
+                                setVisible(false);
+                                antrenorUI frame2 = new antrenorUI();
+                                frame2.setVisible(true);
+                            }
+                            case "2" ->                             {
+                                setVisible(false);
+                                managerrUI frame2 = new managerrUI();
+                                frame2.setVisible(true);
+                            }
+                            default -> {
+                            }
                         }
                         validLogin = true;
                         break;
@@ -196,12 +194,16 @@ public class Login extends javax.swing.JFrame {
                 if (!validLogin) { // flag değişkeni kullanarak uyarı mesajı verme
                     JOptionPane.showMessageDialog(null, "Kullanıcı adı ya da şifreyi yanlış girdiniz\nLütfen tekrar deneyin");
                 }
-
-                con.close();
+            }
             } catch (Exception e) {
                 e.printStackTrace();
             }
-
+    }
+    
+    private void kButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kButton1ActionPerformed
+        String userName = jTextField3.getText();
+        String password = jPasswordField1.getText();
+        findFromDatabase(userName, password);
     }//GEN-LAST:event_kButton1ActionPerformed
 
     /**
