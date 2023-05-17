@@ -199,8 +199,7 @@ public class sekreterMusteriSil extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jLabel4MouseClicked
 
-    private void kButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kButton1ActionPerformed
-        String tcNo = jTextField2.getText();
+    public void deleteCustomerDatabase(String tcNo, String sql){
         try {
             // Veritabanı bağlantısı oluşturma
             Connection con = DriverManager.getConnection(
@@ -208,7 +207,7 @@ public class sekreterMusteriSil extends javax.swing.JFrame {
                     "enq8p0j5ciweyw1gsfrg",
                     "pscale_pw_2QyPbaQViAG5k6JgsBdbvKXkBkeGi6h8OKgMWImpieg"
             );
-            String sql = "DELETE FROM Musteri WHERE TC = ?";
+            
 
             // PreparedStatement objesi oluşturma
             PreparedStatement preparedStatement = con.prepareStatement(sql);
@@ -223,6 +222,12 @@ public class sekreterMusteriSil extends javax.swing.JFrame {
         } catch (SQLException e) {
             System.out.println("Veritabanı hatası oluştu: " + e.getMessage());
         }
+    }
+    
+    private void kButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kButton1ActionPerformed
+        String tcNo = jTextField2.getText();
+        String sql = "DELETE FROM Musteri WHERE TC = ?";
+        deleteCustomerDatabase(tcNo, sql);
         
     }//GEN-LAST:event_kButton1ActionPerformed
     
