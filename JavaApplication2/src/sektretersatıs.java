@@ -2,7 +2,16 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.time.LocalDate;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JPanel;
+import javax.swing.JOptionPane;
 /**
  *
  * @author omera
@@ -183,6 +192,11 @@ public class sektretersatıs extends javax.swing.JFrame {
         jButton5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButton5.setForeground(new java.awt.Color(255, 255, 255));
         jButton5.setText("Satış Raporu Gir");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
         jPanel3.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 463, 140, 40));
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -215,19 +229,17 @@ public class sektretersatıs extends javax.swing.JFrame {
         
 
     private void jPanel2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MouseEntered
-            setColor(jPanel2);  
-            // TODO add your handling code here:
+        setColor(jPanel2);
     }//GEN-LAST:event_jPanel2MouseEntered
 
     private void jPanel2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MouseExited
-            resetColor(jPanel2);   
-         // TODO add your handling code here:
+        resetColor(jPanel2);   
     }//GEN-LAST:event_jPanel2MouseExited
 
     private void jPanel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MouseClicked
-    setVisible(false); //ilk paneli gizle
-    secretaryUI frame2 = new secretaryUI();
-    frame2.setVisible(true); //ikinci paneli göster    // TODO add your handling code here:
+        setVisible(false); //ilk paneli gizle
+        secretaryUI frame2 = new secretaryUI();
+        frame2.setVisible(true); //ikinci paneli göster    // TODO add your handling code here:
     }//GEN-LAST:event_jPanel2MouseClicked
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
@@ -236,22 +248,60 @@ public class sektretersatıs extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1MouseClicked
 
     private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
-      precounter++; 
-     jTextField2.setText(Integer.toString(precounter));    // TODO add your handling code here:
+        precounter++; 
+        jTextField2.setText(Integer.toString(precounter));
     }//GEN-LAST:event_jButton2MouseClicked
 
     private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
-         gainercounter++; 
-     jTextField3.setText(Integer.toString(gainercounter));     // TODO add your handling code here:
+        gainercounter++; 
+        jTextField3.setText(Integer.toString(gainercounter));
     }//GEN-LAST:event_jButton3MouseClicked
 
     private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
-              kreatincounter++; 
-     jTextField4.setText(Integer.toString(kreatincounter));    // TODO add your handling code here:
+        kreatincounter++; 
+        jTextField4.setText(Integer.toString(kreatincounter));
     }//GEN-LAST:event_jButton4MouseClicked
+    
+    public void sellCustomerSuplement(String name, String mesaj1, String mesaj2, LocalDate date){
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+        } catch (ClassNotFoundException ex) {
+                JOptionPane.showMessageDialog(this, ex);
+                System.out.println("hata");
+        }
+        try {
+            Connection con = DriverManager.getConnection(
+                    "jdbc:mysql://aws.connect.psdb.cloud/mmooodatabase?sslMode=VERIFY_IDENTITY",
+                    "enq8p0j5ciweyw1gsfrg",
+                    "pscale_pw_2QyPbaQViAG5k6JgsBdbvKXkBkeGi6h8OKgMWImpieg");
+            Statement st = con.createStatement();
+            String sql = "INSERT INTO rapor (nSurname, kategori, date, mesaj) VALUES ('"+ name + "', 'Takviye alımı', '" + date + "', '" + mesaj1 +"')";
+            st.executeUpdate(sql);
+            String sql2 = "INSERT INTO rapor (nSurname, kategori, date, mesaj) VALUES ('"+ name + "', 'Takviye alımı', '" + date + "', '" + mesaj2 +"')";
+            st.executeUpdate(sql2);
+            JOptionPane.showMessageDialog(null, "Satıs yapıldı ");
+        } catch (SQLException ex) {
+            Logger.getLogger(sekreterMusteriEkle.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        int prew = Integer.parseInt(jTextField2.getText()); // 400
+        int whey = Integer.parseInt(jTextField1.getText()); // 1k
+        int gain = Integer.parseInt(jTextField3.getText()); // 350
+        int creat = Integer.parseInt(jTextField4.getText()); // 250
+        String mesaj1 = prew + " adet Preworkout, " + whey + " adet Whey Protein, " + gain + " adet Gainer, " + creat + " adet Kreatin";
+        int money = prew*400 + whey*1000 + gain*350 + creat*250;
+        String mesaj2 = "Odenen toplam ucret " + money +" tl." ;
+        LocalDate date = LocalDate.now();
+        sellCustomerSuplement("", mesaj1, mesaj2, date);
+        
+    }//GEN-LAST:event_jButton5ActionPerformed
+    
     public void setColor(JPanel panel){
         panel.setBackground(new java.awt.Color(197,197,197));
     }
+    
     public void resetColor(JPanel panel){
         panel.setBackground(new java.awt.Color(240,240,240));
     }
