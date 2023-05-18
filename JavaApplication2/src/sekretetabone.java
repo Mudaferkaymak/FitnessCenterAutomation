@@ -11,10 +11,6 @@ import javax.swing.JPanel;
  * @author omera
  */
 public class sekretetabone extends javax.swing.JFrame {
-
-    /**
-     * Creates new form sekretetabone
-     */
     public sekretetabone() {
         initComponents();
     }
@@ -291,31 +287,27 @@ public class sekretetabone extends javax.swing.JFrame {
     }//GEN-LAST:event_jPanel2MouseEntered
 
     private void jPanel2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MouseExited
-            resetColor(jPanel2);   
-         // TODO add your handling code here:
+        resetColor(jPanel2);   
     }//GEN-LAST:event_jPanel2MouseExited
 
     private void jPanel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MouseClicked
-    setVisible(false); //ilk paneli gizle
-    secretaryUI frame2 = new secretaryUI();
-    frame2.setVisible(true); //ikinci paneli göster    // TODO add your handling code here:
+        setVisible(false); //ilk paneli gizle
+        secretaryUI frame2 = new secretaryUI();
+        frame2.setVisible(true); //ikinci paneli göster    // TODO add your handling code here:
     }//GEN-LAST:event_jPanel2MouseClicked
 
     private void jPanel5MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel5MouseEntered
         setColor(jPanel5);
-        // TODO add your handling code here:
     }//GEN-LAST:event_jPanel5MouseEntered
 
     private void jPanel5MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel5MouseExited
         resetColor(jPanel5);
-        // TODO add your handling code here:
     }//GEN-LAST:event_jPanel5MouseExited
 
     private void jPanel5MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel5MousePressed
-        setVisible(false); //ilk paneli gizle
+        setVisible(false);
         sekretetabone frame2 = new sekretetabone();
         frame2.setVisible(true);
-        // TODO add your handling code here:
     }//GEN-LAST:event_jPanel5MousePressed
 
     private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
@@ -348,45 +340,44 @@ public class sekretetabone extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(sekreterMusteriYenile.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jButton1MouseClicked
-        public void setColor(JPanel panel){
+        
+    public void setColor(JPanel panel){
         panel.setBackground(new java.awt.Color(197,197,197));
     }
+    
     public void resetColor(JPanel panel){
         panel.setBackground(new java.awt.Color(242,242,242));
     }
     /**
      * @param args the command line arguments
-     */public static void main(String args[]) {
-
-    // ...
-
-    try {
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {}
-        });
-        sekretetabone myForm = new sekretetabone();
-        myForm.setVisible(true);
-        myForm.displayUsers();
-    } catch (SQLException ex) {
-        java.util.logging.Logger.getLogger(sekretetabone.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-    } 
-}
+     */
+    
+    public static void main(String args[]) {
+        try {
+            java.awt.EventQueue.invokeLater(() -> {
+            });
+            sekretetabone myForm = new sekretetabone();
+            myForm.setVisible(true);
+            myForm.displayUsers();
+        } catch (SQLException ex) {
+            java.util.logging.Logger.getLogger(sekretetabone.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } 
+    }
+    
     public void displayUsers() throws SQLException {
             JTable table = new JTable();
             DefaultTableModel model = new DefaultTableModel();
             table.setModel(model);
-
             try {
                 Class.forName("com.mysql.cj.jdbc.Driver");
             } catch (ClassNotFoundException ex) {
                 JOptionPane.showMessageDialog(this, ex);
                 System.out.println("hata");
             }
-            Connection Con = DriverManager.getConnection(
-                    "jdbc:mysql://aws.connect.psdb.cloud/mmooodatabase?sslMode=VERIFY_IDENTITY",
-                    "enq8p0j5ciweyw1gsfrg",
-                    "pscale_pw_2QyPbaQViAG5k6JgsBdbvKXkBkeGi6h8OKgMWImpieg");
-
+        try (Connection Con = DriverManager.getConnection(
+                "jdbc:mysql://aws.connect.psdb.cloud/mmooodatabase?sslMode=VERIFY_IDENTITY",
+                "enq8p0j5ciweyw1gsfrg",
+                "pscale_pw_2QyPbaQViAG5k6JgsBdbvKXkBkeGi6h8OKgMWImpieg")) {
             Statement st = Con.createStatement();
             ResultSet rs = st.executeQuery("SELECT isim,uyelikTarihi,abonelikBitis,TC FROM Musteri");
 
@@ -405,9 +396,9 @@ public class sekretetabone extends javax.swing.JFrame {
                 tableModel.addRow(row);
             }
             jTable1.setModel(tableModel);
-                 rs.close();
-                 st.close();
-                 Con.close();    
+            rs.close();
+            st.close();
+        }    
 
     }
 

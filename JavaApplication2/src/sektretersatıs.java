@@ -4,7 +4,6 @@
  */
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.LocalDate;
@@ -286,10 +285,10 @@ public class sektretersatıs extends javax.swing.JFrame {
     }
     
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        int prew = Integer.parseInt(jTextField2.getText()); // 400
-        int whey = Integer.parseInt(jTextField1.getText()); // 1k
-        int gain = Integer.parseInt(jTextField3.getText()); // 350
-        int creat = Integer.parseInt(jTextField4.getText()); // 250
+        int prew = precounter; // 400
+        int whey = wheycounter; // 1k
+        int gain = gainercounter; // 350
+        int creat = kreatincounter; // 250
         String mesaj1 = prew + " adet Preworkout, " + whey + " adet Whey Protein, " + gain + " adet Gainer, " + creat + " adet Kreatin";
         int money = prew*400 + whey*1000 + gain*350 + creat*250;
         String mesaj2 = "Odenen toplam ucret " + money +" tl." ;

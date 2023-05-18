@@ -16,10 +16,6 @@ import javax.swing.table.DefaultTableModel;
  * @author omera
  */
 public class sekreterMusteriYenile extends javax.swing.JFrame {
-
-    /**
-     * Creates new form sekreterMusteriEkle
-     */
     public sekreterMusteriYenile() {
         initComponents();
     }
@@ -214,7 +210,6 @@ public class sekreterMusteriYenile extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
-        // TODO add your handling code here:
     }//GEN-LAST:event_jLabel4MouseClicked
 
     public void updateCustomerDatabase(String TC, String choice, String newS){
@@ -237,6 +232,8 @@ public class sekreterMusteriYenile extends javax.swing.JFrame {
             } else {
                 JOptionPane.showMessageDialog(null, "Musteri mevcut değil");
             }
+            con.close();
+            rs.close();
         } catch (SQLException e) {
             Logger.getLogger(sekreterMusteriYenile.class.getName()).log(Level.SEVERE, null, e);
         }

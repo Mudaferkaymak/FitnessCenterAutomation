@@ -19,10 +19,6 @@ import javax.swing.JOptionPane;
  * @author omera
  */
 public class sekretereslestır extends javax.swing.JFrame {
-
-    /**
-     * Creates new form sekretereslestır
-     */
     public sekretereslestır() {
         initComponents();
     }
@@ -144,12 +140,15 @@ public class sekretereslestır extends javax.swing.JFrame {
             ResultSet rs = stmt.executeQuery(sql1);
             rs.next();
             int result = rs.getInt("result");
+            con.close();
+            rs.close();
             if (result==1) {
                 return true;
             } else {
                 JOptionPane.showMessageDialog(null, "Musteri mevcut değil");
                 return false;
             }
+            
         } catch (SQLException e) {
             Logger.getLogger(sekretereslestır.class.getName()).log(Level.SEVERE, null, e);
         }
@@ -168,6 +167,8 @@ public class sekretereslestır extends javax.swing.JFrame {
             ResultSet rs = stmt.executeQuery(sql1);
             rs.next();
             int result = rs.getInt("result");
+            rs.close();
+            con.close();
             if (result==1) {
                 return true;
             } else {
@@ -193,6 +194,8 @@ public class sekretereslestır extends javax.swing.JFrame {
             ResultSet rs = stmt.executeQuery(sql1);
             rs.next();
             int result = rs.getInt("result");
+            rs.close();
+            con.close();
             if (result==1) {
                 return true;
             } else {
@@ -235,6 +238,8 @@ public class sekretereslestır extends javax.swing.JFrame {
             }else{
                 JOptionPane.showMessageDialog(null, "Hata olustu");
             }
+            con.close();
+            resultSet.close();
         } catch (SQLException ex) {
             Logger.getLogger(sekreterMusteriEkle.class.getName()).log(Level.SEVERE, null, ex);
         }

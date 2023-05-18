@@ -324,18 +324,15 @@ public class secretaryUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void exit0MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exit0MousePressed
-        // TODO add your handling code here:
         System.exit(0);
     }//GEN-LAST:event_exit0MousePressed
 
     private void jPanel5MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel5MouseEntered
-    setColor(jPanel5);
-        // TODO add your handling code here:
+        setColor(jPanel5);
     }//GEN-LAST:event_jPanel5MouseEntered
 
     private void jPanel5MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel5MouseExited
-    resetColor(jPanel5);
-    // TODO add your handling code here:
+        resetColor(jPanel5);
     }//GEN-LAST:event_jPanel5MouseExited
 
     private void jPanel2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MouseEntered
@@ -347,47 +344,48 @@ public class secretaryUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jPanel2MouseExited
 
     private void jpanel3mousenter(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpanel3mousenter
-           setColor(jPanel3);      // TODO add your handling code here:
+        setColor(jPanel3);      // TODO add your handling code here:
     }//GEN-LAST:event_jpanel3mousenter
 
     private void jpanel3exit(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpanel3exit
-            resetColor(jPanel3);      // TODO add your handling code here:
+        resetColor(jPanel3);      // TODO add your handling code here:
     }//GEN-LAST:event_jpanel3exit
 
     private void jpanel4enter(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpanel4enter
-               setColor(jPanel4);    // TODO add your handling code here:
+        setColor(jPanel4);    // TODO add your handling code here:
     }//GEN-LAST:event_jpanel4enter
 
     private void jpanel4exit(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpanel4exit
-               resetColor(jPanel4);        // TODO add your handling code here:
+        resetColor(jPanel4);        // TODO add your handling code here:
     }//GEN-LAST:event_jpanel4exit
 
     private void jPanel5MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel5MousePressed
-    setVisible(false); 
-    try {
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {}
-        });
-        sekretetabone myForm = new sekretetabone();
-        myForm.setVisible(true);
-        myForm.displayUsers();
-    } catch (SQLException ex) {
-        java.util.logging.Logger.getLogger(sekretetabone.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-    }
-    // TODO add your handling code here:
+        setVisible(false); 
+        try {
+            sekretetabone myForm = new sekretetabone();
+            myForm.setVisible(true);
+            myForm.displayUsers();
+        } catch (SQLException ex) {
+            java.util.logging.Logger.getLogger(sekretetabone.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jPanel5MousePressed
 
     private void jPanel2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MousePressed
- // TODO add your handling code here:
-    setVisible(false); //ilk paneli gizle
-    sekreterrezervasyon frame2 = new sekreterrezervasyon();
-    frame2.setVisible(true); 
+        setVisible(false);
+        try {
+            sekreterrezervasyon myForm = new sekreterrezervasyon();
+            myForm.setVisible(true);
+            myForm.displayCustomer();
+            myForm.displayAntrenor();
+        } catch (SQLException ex) {
+            java.util.logging.Logger.getLogger(sekreterrezervasyon.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jPanel2MousePressed
 
     private void jPanel3MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel3MousePressed
-    setVisible(false); //ilk paneli gizle
-    sektretersatıs frame2 = new sektretersatıs();
-    frame2.setVisible(true);
+        setVisible(false); //ilk paneli gizle
+        sektretersatıs frame2 = new sektretersatıs();
+        frame2.setVisible(true);
     }//GEN-LAST:event_jPanel3MousePressed
 
     private void jPanel4MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel4MousePressed
@@ -434,8 +432,6 @@ public class secretaryUI extends javax.swing.JFrame {
                 new secretaryUI().setVisible(true);
             }
         });
-//secretaryUI ui = new secretaryUI(); // create an instance of the secretaryUI class
-//ui.setLocation(300, 300); // set the location of the instance
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

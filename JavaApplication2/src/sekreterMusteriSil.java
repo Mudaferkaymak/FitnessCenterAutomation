@@ -1,10 +1,5 @@
 
-import java.awt.Color;/*
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
-import java.sql.SQLException;*/
+import java.awt.Color;
 import java.sql.*;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
@@ -22,14 +17,6 @@ import javax.swing.table.DefaultTableModel;
 
 
 public class sekreterMusteriSil extends javax.swing.JFrame {
-    
-    
-
-    
-
-    /**
-     * Creates new form sekreterMusteriEkle
-     */
     public sekreterMusteriSil() {
         initComponents();
     }
@@ -52,7 +39,6 @@ public class sekreterMusteriSil extends javax.swing.JFrame {
         jTable1 = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         kButton1 = new com.k33ptoo.components.KButton();
-        jButton1 = new javax.swing.JButton();
 
         kGradientPanel1.setkEndColor(new java.awt.Color(204, 255, 255));
         kGradientPanel1.setkGradientFocus(20);
@@ -122,9 +108,6 @@ public class sekreterMusteriSil extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jButton1.setText("Raporla");
-
         javax.swing.GroupLayout kGradientPanel1Layout = new javax.swing.GroupLayout(kGradientPanel1);
         kGradientPanel1.setLayout(kGradientPanel1Layout);
         kGradientPanel1Layout.setHorizontalGroup(
@@ -151,9 +134,6 @@ public class sekreterMusteriSil extends javax.swing.JFrame {
                                 .addComponent(kButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 100, Short.MAX_VALUE))
                     .addGroup(kGradientPanel1Layout.createSequentialGroup()
-                        .addContainerGap(281, Short.MAX_VALUE)
-                        .addComponent(jButton1))
-                    .addGroup(kGradientPanel1Layout.createSequentialGroup()
                         .addGap(6, 6, 6)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
                 .addContainerGap())
@@ -175,9 +155,7 @@ public class sekreterMusteriSil extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26)
-                .addGroup(kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(kButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
+                .addComponent(kButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -196,20 +174,15 @@ public class sekreterMusteriSil extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
-        // TODO add your handling code here:
     }//GEN-LAST:event_jLabel4MouseClicked
 
     public void deleteCustomerDatabase(String tcNo, String sql){
         try {
-            // Veritabanı bağlantısı oluşturma
             Connection con = DriverManager.getConnection(
                     "jdbc:mysql://aws.connect.psdb.cloud/mmooodatabase?sslMode=VERIFY_IDENTITY",
                     "enq8p0j5ciweyw1gsfrg",
                     "pscale_pw_2QyPbaQViAG5k6JgsBdbvKXkBkeGi6h8OKgMWImpieg"
             );
-            
-
-            // PreparedStatement objesi oluşturma
             PreparedStatement preparedStatement = con.prepareStatement(sql);
             preparedStatement.setString(1, tcNo);
             
@@ -219,6 +192,7 @@ public class sekreterMusteriSil extends javax.swing.JFrame {
             } else {
                 JOptionPane.showMessageDialog(null, "Musteri silinirken bir hata oluştu ");
             }
+            con.close();
         } catch (SQLException e) {
             System.out.println("Veritabanı hatası oluştu: " + e.getMessage());
         }
@@ -228,7 +202,6 @@ public class sekreterMusteriSil extends javax.swing.JFrame {
         String tcNo = jTextField2.getText();
         String sql = "DELETE FROM Musteri WHERE TC = ?";
         deleteCustomerDatabase(tcNo, sql);
-        
     }//GEN-LAST:event_kButton1ActionPerformed
     
     /**
@@ -308,7 +281,6 @@ public class sekreterMusteriSil extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;

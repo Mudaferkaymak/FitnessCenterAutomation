@@ -278,7 +278,8 @@ public class sekreterMusteriEkle extends javax.swing.JFrame {
                 st.executeUpdate(sql);
                 JOptionPane.showMessageDialog(null, "Musteri eklendi ");
             }
- 
+            con.close();
+            rs.close();
         } catch (SQLException ex) {
             Logger.getLogger(sekreterMusteriEkle.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -286,7 +287,6 @@ public class sekreterMusteriEkle extends javax.swing.JFrame {
     
     private void kButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kButton1ActionPerformed
         String fullName  = jTextField1.getText();
-        
         String[] words = fullName.split(" ");
         String name = "";
         String surName = "";
@@ -298,7 +298,6 @@ public class sekreterMusteriEkle extends javax.swing.JFrame {
         }else{
             name += fullName;
         }
-        
         String tcNo = jTextField2.getText();
         String memberShip = jTextField3.getText();
         String telNo = jTextField4.getText();
@@ -306,9 +305,7 @@ public class sekreterMusteriEkle extends javax.swing.JFrame {
         String blood = jTextField6.getText();
         String age = jTextField7.getText();
         java.sql.Date date = new java.sql.Date(new java.util.Date().getTime());
-        
         addCustomerDatabase(name, surName, tcNo, memberShip, telNo, telNo2, blood, age, date);
-
     }//GEN-LAST:event_kButton1ActionPerformed
 
     /**
