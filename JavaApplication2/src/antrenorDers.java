@@ -289,7 +289,6 @@ public class antrenorDers extends javax.swing.JFrame {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Beklenmedik bir hata oluştu: " + e.getMessage());
         }
-
     }//GEN-LAST:event_jButton1ActionPerformed
             public void setColor(JPanel panel){
         panel.setBackground(new java.awt.Color(197,197,197));
