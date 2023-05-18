@@ -361,21 +361,11 @@ public class sekretetabone extends javax.swing.JFrame {
     // ...
 
     try {
-        // Look and feel setting code
-
-        // Create and display the form
         java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                
-             //   new sekretetabone().setVisible(true);
-            }
+            public void run() {}
         });
-
-        // Call displayUsers() function
         sekretetabone myForm = new sekretetabone();
         myForm.setVisible(true);
-
-        // Call displayUsers() function on the existing form
         myForm.displayUsers();
     } catch (SQLException ex) {
         java.util.logging.Logger.getLogger(sekretetabone.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
@@ -405,13 +395,8 @@ public class sekretetabone extends javax.swing.JFrame {
             String[] columnNames = new String[columnCount];
             for (int i = 1; i <= columnCount; i++) {
                 columnNames[i - 1] = metaData.getColumnName(i);
-                //System.out.println(columnNames[i-1]);
             }
-
-            // DefaultTableModel nesnesini oluştur ve sütun bilgilerini ekle
             DefaultTableModel tableModel = new DefaultTableModel(columnNames, 0);
-
-            // ResultSet nesnesinden verileri tabloya ekle
             while (rs.next()) {
                 Object[] row = new Object[columnCount];
                 for (int i = 1; i <= columnCount; i++) {
@@ -419,17 +404,7 @@ public class sekretetabone extends javax.swing.JFrame {
                 }
                 tableModel.addRow(row);
             }
-
-            // JTable nesnesini oluştur ve verileri ekleyerek göster
-          //  table.setModel(tableModel);
             jTable1.setModel(tableModel);
-           //  JOptionPane.showMessageDialog(null, new JScrollPane(table), "Table", JOptionPane.PLAIN_MESSAGE);
-            // JPanel nesnesini oluştur ve JTable'i JScrollPane'e yerleştir
-            /*JPanel panel = new JPanel(new BorderLayout());
-            jPanel1.add(new JScrollPane(table), BorderLayout.CENTER);
-
-            // Bu JPanel nesnesini kullanıcı arabiriminizdeki uygun yere yerleştirin
-            jPanel1.add(panel);*/
                  rs.close();
                  st.close();
                  Con.close();    

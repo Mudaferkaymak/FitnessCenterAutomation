@@ -391,9 +391,9 @@ public class secretaryUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jPanel3MousePressed
 
     private void jPanel4MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel4MousePressed
-        setVisible(false); //ilk paneli gizle
+        setVisible(false); 
         arızaRaporOlustur frame2 = new arızaRaporOlustur();
-        frame2.setVisible(true);  //ikinci paneli göster    // TODO add your handling code here:
+        frame2.setVisible(true); 
     }//GEN-LAST:event_jPanel4MousePressed
     public void setColor(JPanel panel){
         panel.setBackground(new java.awt.Color(197,197,197));

@@ -1,5 +1,13 @@
 
 import java.awt.Color;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -124,10 +132,140 @@ public class sekretereslestır extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    public boolean checkMusteri(String tc){
+        try {
+            java.sql.Connection con = DriverManager.getConnection(
+                    "jdbc:mysql://aws.connect.psdb.cloud/mmooodatabase?sslMode=VERIFY_IDENTITY",
+                    "enq8p0j5ciweyw1gsfrg",
+                    "pscale_pw_2QyPbaQViAG5k6JgsBdbvKXkBkeGi6h8OKgMWImpieg");
+            
+            String sql1 = "SELECT CASE WHEN COUNT(*) > 0 THEN 1 ELSE 0 END AS result FROM Musteri WHERE TC = '" + tc + "'";
+            Statement stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery(sql1);
+            rs.next();
+            int result = rs.getInt("result");
+            if (result==1) {
+                return true;
+            } else {
+                JOptionPane.showMessageDialog(null, "Musteri mevcut değil");
+                return false;
+            }
+        } catch (SQLException e) {
+            Logger.getLogger(sekretereslestır.class.getName()).log(Level.SEVERE, null, e);
+        }
+        return false;
+    }
+    
+    public boolean checkAntrenor(String antr){
+        try {
+            java.sql.Connection con = DriverManager.getConnection(
+                    "jdbc:mysql://aws.connect.psdb.cloud/mmooodatabase?sslMode=VERIFY_IDENTITY",
+                    "enq8p0j5ciweyw1gsfrg",
+                    "pscale_pw_2QyPbaQViAG5k6JgsBdbvKXkBkeGi6h8OKgMWImpieg");
+            
+            String sql1 = "SELECT CASE WHEN COUNT(*) > 0 THEN 1 ELSE 0 END AS result FROM Personel WHERE isim = '" + antr + "'";
+            Statement stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery(sql1);
+            rs.next();
+            int result = rs.getInt("result");
+            if (result==1) {
+                return true;
+            } else {
+                JOptionPane.showMessageDialog(null, "Antrenor mevcut değil");
+                return false;
+            }
+        } catch (SQLException e) {
+            Logger.getLogger(sekretereslestır.class.getName()).log(Level.SEVERE, null, e);
+        }
+        return false;
+    
+    }
+    
+    public boolean checkDersMevcut(String dersAdi, int saat){
+        try {
+            java.sql.Connection con = DriverManager.getConnection(
+                    "jdbc:mysql://aws.connect.psdb.cloud/mmooodatabase?sslMode=VERIFY_IDENTITY",
+                    "enq8p0j5ciweyw1gsfrg",
+                    "pscale_pw_2QyPbaQViAG5k6JgsBdbvKXkBkeGi6h8OKgMWImpieg");
+            
+            String sql1 = "SELECT CASE WHEN COUNT(*) > 0 THEN 1 ELSE 0 END AS result FROM dersEslestirme WHERE verdigiDers = '" + dersAdi + "' AND dersSaati = '" + saat + "'";
+            Statement stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery(sql1);
+            rs.next();
+            int result = rs.getInt("result");
+            if (result==1) {
+                return true;
+            } else {
+                JOptionPane.showMessageDialog(null, "Antrenorun dersi mevcut değil");
+                return false;
+            }
+        } catch (SQLException e) {
+            Logger.getLogger(sekretereslestır.class.getName()).log(Level.SEVERE, null, e);
+        }
+        return false;
+    }
+    
+    public void addODMADatabase(String tc, String antr, String dersAdi, int saat){
+        try {
+                Class.forName("com.mysql.cj.jdbc.Driver");
+        } catch (ClassNotFoundException ex) {
+                JOptionPane.showMessageDialog(this, ex);
+                System.out.println("hata");
+        }
+        try {
+            Connection con = DriverManager.getConnection(
+                    "jdbc:mysql://aws.connect.psdb.cloud/mmooodatabase?sslMode=VERIFY_IDENTITY",
+                    "enq8p0j5ciweyw1gsfrg",
+                    "pscale_pw_2QyPbaQViAG5k6JgsBdbvKXkBkeGi6h8OKgMWImpieg");
+                
+            String sql = "INSERT INTO ozelDersMuAn (antrenorName, dersName, musteriTC, dersSaati) VALUES ('"+ antr + "', '" + dersAdi + "', '" + tc + "', '" + saat + "')";
+            Statement st = con.createStatement();
+            st.executeUpdate(sql);
+            
+            sql = "SELECT ogrenciSayisi FROM dersEslestirme WHERE verdigiDers = ?";
+            PreparedStatement statement = con.prepareStatement(sql);
+            statement.setString(1, dersAdi);
+            ResultSet resultSet = statement.executeQuery();
+            if (resultSet.next()) {
+                int ogrenciSayisi = resultSet.getInt("ogrenciSayisi") + 1;
+                sql = "UPDATE dersEslestirme SET ogrenciSayisi = " + ogrenciSayisi + " WHERE verdigiDers = '" + dersAdi + "' AND dersSaati = '" + saat + "'";
+                st.executeUpdate(sql);
+                JOptionPane.showMessageDialog(null, "Özel ders eklendi");
+                
+            }else{
+                JOptionPane.showMessageDialog(null, "Hata olustu");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(sekreterMusteriEkle.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-    String tc = mtc.getText().toString();    // TODO add your handling code here:
-    String antr = antrenor.getText().toString(); 
-    int saatIndex = combosaat.getSelectedIndex(); 
+        String tc = mtc.getText();    
+        if(!checkMusteri(tc))
+            return;
+        
+        String antr = antrenor.getText();
+        if(!checkAntrenor(antr))
+            return;
+        
+        String dersAdi = dersadıtext.getText();
+        int saatIndex = combosaat.getSelectedIndex();
+        switch (saatIndex) {
+            case 0 -> saatIndex = 9;
+            case 1 -> saatIndex = 11;
+            case 2 -> saatIndex = 13;
+            case 3 -> saatIndex = 15;
+            case 4 -> saatIndex = 17;
+            case 5 -> saatIndex = 19;
+            case 6 -> saatIndex = 21;
+            default -> {
+            }
+        }
+        if(!checkDersMevcut(dersAdi, saatIndex))
+            return;
+        
+        addODMADatabase(tc, antr, dersAdi, saatIndex);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void antrenorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_antrenorActionPerformed

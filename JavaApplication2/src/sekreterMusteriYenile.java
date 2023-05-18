@@ -1,5 +1,4 @@
 
-import com.sun.jdi.connect.spi.Connection;
 import java.awt.Color;
 import java.sql.*;
 import java.util.logging.Level;
@@ -231,7 +230,6 @@ public class sekreterMusteriYenile extends javax.swing.JFrame {
             rs.next();
             int result = rs.getInt("result");
             if (result==1) {
-                
                 String sql2 = "UPDATE Musteri SET " + choice + " = " + newS + " WHERE TC = "+ TC;
                 Statement stmt1 = con.createStatement();
                 stmt1.executeUpdate(sql2);
