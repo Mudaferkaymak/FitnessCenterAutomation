@@ -23,7 +23,20 @@ import java.awt.Color;
  * @author omera
  */
 public class Login extends javax.swing.JFrame {
+    private String isim;
 
+    public String getTc() {
+        return isim;
+    }
+
+    public void setTc(String tc) {
+        this.isim = tc;
+    }
+
+    public Login(String isim) {
+        this.isim = isim;
+    }
+    
     /**
      * Creates new form Login
      */
@@ -158,13 +171,16 @@ public class Login extends javax.swing.JFrame {
                     "enq8p0j5ciweyw1gsfrg",
                     "pscale_pw_2QyPbaQViAG5k6JgsBdbvKXkBkeGi6h8OKgMWImpieg"
             )) {
+          
                 Statement stmt = con.createStatement();
-                ResultSet rs = stmt.executeQuery("SELECT isim,password,pozisyon FROM Personel");
+                ResultSet rs = stmt.executeQuery("SELECT isim,password,pozisyon,ID FROM Personel");
                 boolean validLogin = false;
+                
                 while (rs.next()) {
                     String dataName = rs.getString("isim");
                     String passName = rs.getString("password");
                     String position = rs.getString("pozisyon");
+                    String ID = rs.getString("ID");
                     System.out.println(position);
                     if (userName.equals(dataName) && password.equals(passName)) {
                         switch (position) {
@@ -187,8 +203,15 @@ public class Login extends javax.swing.JFrame {
                             }
                         }
                         validLogin = true;
+                        String sql = "DELETE FROM current";
+                        stmt.executeUpdate(sql);
+                        sql = " INSERT INTO current (ID) VALUES (?)";
+                        PreparedStatement preparedStmt = con.prepareStatement(sql);
+                        preparedStmt.setString (1,ID );
+                        preparedStmt.executeUpdate();
                         break;
                     }
+                    
                 }
 
                 if (!validLogin) { // flag değişkeni kullanarak uyarı mesajı verme
