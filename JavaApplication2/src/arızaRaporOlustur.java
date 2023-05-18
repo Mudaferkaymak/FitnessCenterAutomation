@@ -1,3 +1,14 @@
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.time.LocalDate;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -46,6 +57,11 @@ public class arızaRaporOlustur extends javax.swing.JFrame {
         jLabel2.setText("Bir kategori seçin");
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Makine Arızası", "Salon Temizliği", "Öneri", "Şikayet", " " }));
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
@@ -62,6 +78,11 @@ public class arızaRaporOlustur extends javax.swing.JFrame {
         kButton1.setkHoverForeGround(new java.awt.Color(153, 153, 255));
         kButton1.setkHoverStartColor(new java.awt.Color(153, 51, 255));
         kButton1.setkIndicatorColor(new java.awt.Color(153, 153, 153));
+        kButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                kButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout kGradientPanel1Layout = new javax.swing.GroupLayout(kGradientPanel1);
         kGradientPanel1.setLayout(kGradientPanel1Layout);
@@ -117,6 +138,68 @@ public class arızaRaporOlustur extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    public void raporEkle(String mesaj, String kategori, LocalDate date){
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+        } catch (ClassNotFoundException ex) {
+                JOptionPane.showMessageDialog(this, ex);
+                System.out.println("hata");
+        }
+        try {
+            Connection con = DriverManager.getConnection(
+                    "jdbc:mysql://aws.connect.psdb.cloud/mmooodatabase?sslMode=VERIFY_IDENTITY",
+                    "enq8p0j5ciweyw1gsfrg",
+                    "pscale_pw_2QyPbaQViAG5k6JgsBdbvKXkBkeGi6h8OKgMWImpieg");
+            Statement st = con.createStatement();
+            String sql = "SELECT ID FROM current";
+            ResultSet rs = st.executeQuery(sql);
+            String ID = rs.getString("ID");
+            sql ="SELECT isim,soyisim,ID FROM Personel";
+            rs = st.executeQuery(sql);
+            boolean islem = false;
+            while (rs.next()) {
+                String dataName = rs.getString("isim");
+                String dataSurname = rs.getString("soyisim");
+                String dataID = rs.getString("ID");
+                if(dataID.equals(ID)){
+                    String nSurname = dataName + " " + dataSurname;
+                    sql = "INSERT INTO rapor (nSurname, kategori, date, mesaj) VALUES ('"+ nSurname + "', '"+ kategori +"', '" + date + "', '" + mesaj +"')";
+                    st.executeUpdate(sql);
+                    islem = true;
+                }
+            }
+            if(islem){
+                JOptionPane.showMessageDialog(null, "Rapor olusturuldu ");
+                return;
+            }
+            JOptionPane.showMessageDialog(null, "Rapor olusturulurken bir hata ile karsilasildi");
+        } catch (SQLException ex) {
+            Logger.getLogger(sekreterMusteriEkle.class.getName()).log(Level.SEVERE, null, ex);
+        }
+                    
+    }
+    
+    private void kButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kButton1ActionPerformed
+        String mesaj = jTextField1.getText();
+        int kategoriIndex = jComboBox1.getSelectedIndex();
+        
+        String kategori = "";
+        switch (kategoriIndex) {
+            case 0 -> kategori = "Makine Arızası";
+            case 1 -> kategori = "Salon Temizliği";
+            case 2 -> kategori = "Öneri";
+            case 3 -> kategori = "Şikayet";
+            default -> {
+            }
+        }
+        LocalDate date = LocalDate.now();
+        raporEkle(mesaj, kategori, date);
+    }//GEN-LAST:event_kButton1ActionPerformed
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox1ActionPerformed
 
     /**
      * @param args the command line arguments
