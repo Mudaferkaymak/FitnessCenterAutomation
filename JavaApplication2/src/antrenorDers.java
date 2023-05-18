@@ -1,5 +1,10 @@
 
+import com.sun.jdi.connect.spi.Connection;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+ import java.sql.*;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -93,6 +98,11 @@ public class antrenorDers extends javax.swing.JFrame {
         jButton1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Kaydet");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         jLabel7.setText("Ders Açma");
@@ -231,6 +241,59 @@ public class antrenorDers extends javax.swing.JFrame {
         antrenorUI frame2 = new antrenorUI();
         frame2.setVisible(true);     // TODO add your handling code here:
     }//GEN-LAST:event_jPanel3MousePressed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+         String dersAdi  = jTextField3.getText();
+        int dersSaati = Integer.parseInt(jTextField2.getText());
+        try {
+            // create the mysql database connection
+            Class.forName("com.mysql.cj.jdbc.Driver");
+
+            try (java.sql.Connection conn = DriverManager.getConnection(
+                    "jdbc:mysql://aws.connect.psdb.cloud/mmooodatabase?sslMode=VERIFY_IDENTITY",
+                    "enq8p0j5ciweyw1gsfrg",
+                    "pscale_pw_2QyPbaQViAG5k6JgsBdbvKXkBkeGi6h8OKgMWImpieg"
+            )) {
+                    Statement stmt = conn.createStatement();
+                    ResultSet rs = stmt.executeQuery("SELECT ID FROM current");
+                    rs.next();
+                    String ID = rs.getString("ID");
+       
+                    rs = stmt.executeQuery("SELECT isim,soyisim,ID FROM Personel");                
+                    while (rs.next()) {
+                        String dataName = rs.getString("isim");
+                        String dataSurname = rs.getString("soyisim");
+                        String dataID = rs.getString("ID");
+                        if(dataID.equals(ID)){
+                            String sql = " INSERT INTO dersEslestirme (name, surname, verdigiDers, dersSaati,ID) VALUES (?, ?, ?, ?,?)";
+                            PreparedStatement preparedStmt = conn.prepareStatement(sql);
+                             preparedStmt.setString (1, dataName);
+                             preparedStmt.setString (2, dataSurname);
+                             preparedStmt.setString (3, dersAdi);
+                             preparedStmt.setInt (4, dersSaati);
+                             preparedStmt.setString (5, ID);
+                             preparedStmt.executeUpdate();
+                            preparedStmt.close();
+                            JOptionPane.showMessageDialog(null, "Ekleme işlemi başarılı oldu.");
+                           conn.close(); 
+                           setVisible(false); //ilk paneli gizle
+                           antrenorUI frame2 = new antrenorUI();
+                           frame2.setVisible(true); //ikinci paneli göster
+                            break;
+                        }
+ 
+                    }
+                    
+            }
+        } catch (SQLException ex) {
+            // SQL hatası oluştu, kullanıcıya hata mesajı göster
+            JOptionPane.showMessageDialog(null, "Ekleme işlemi sırasında bir hata oluştu: " + ex.getMessage());
+        } catch (Exception e) {
+            // Genel bir hata oluştu, kullanıcıya hata mesajı göster
+            JOptionPane.showMessageDialog(null, "Beklenmedik bir hata oluştu: " + e.getMessage());
+        }
+
+    }//GEN-LAST:event_jButton1ActionPerformed
             public void setColor(JPanel panel){
         panel.setBackground(new java.awt.Color(197,197,197));
     }
@@ -270,8 +333,66 @@ public class antrenorDers extends javax.swing.JFrame {
                 new antrenorDers().setVisible(true);
             }
         });
+        
     }
+    public void displayUsers() throws SQLException {
+            JTable table = new JTable();
+            DefaultTableModel model = new DefaultTableModel();
+            table.setModel(model);
 
+            try {
+                Class.forName("com.mysql.cj.jdbc.Driver");
+            } catch (ClassNotFoundException ex) {
+                JOptionPane.showMessageDialog(this, ex);
+                System.out.println("hata");
+            }
+        try (java.sql.Connection Con = DriverManager.getConnection(
+                "jdbc:mysql://aws.connect.psdb.cloud/mmooodatabase?sslMode=VERIFY_IDENTITY",
+                "enq8p0j5ciweyw1gsfrg",
+                "pscale_pw_2QyPbaQViAG5k6JgsBdbvKXkBkeGi6h8OKgMWImpieg")) {
+            Statement stmt = Con.createStatement();
+            ResultSet rs = stmt.executeQuery("SELECT ID FROM current");
+            rs.next();
+            String ID = rs.getString("ID");
+            
+            PreparedStatement ps = Con.prepareStatement("SELECT verdigiDers, dersSaati, ogrenciSayisi FROM dersEslestirme WHERE ID = ?");
+            ps.setString(1, ID);
+            rs = ps.executeQuery();
+            ResultSetMetaData metaData = rs.getMetaData();
+            int columnCount = metaData.getColumnCount();
+            String[] columnNames = new String[columnCount];
+            for (int i = 1; i <= columnCount; i++) {
+                columnNames[i - 1] = metaData.getColumnName(i);
+                //System.out.println(columnNames[i-1]);
+            }
+
+            // DefaultTableModel nesnesini oluştur ve sütun bilgilerini ekle
+            DefaultTableModel tableModel = new DefaultTableModel(columnNames, 0);
+
+            // ResultSet nesnesinden verileri tabloya ekle
+            while (rs.next()) {
+                Object[] row = new Object[columnCount];
+                for (int i = 1; i <= columnCount; i++) {
+                    row[i - 1] = rs.getObject(i);
+                }
+                tableModel.addRow(row);
+            }
+
+            // JTable nesnesini oluştur ve verileri ekleyerek göster
+            //  table.setModel(tableModel);
+            jTable1.setModel(tableModel);
+            //  JOptionPane.showMessageDialog(null, new JScrollPane(table), "Table", JOptionPane.PLAIN_MESSAGE);
+            // JPanel nesnesini oluştur ve JTable'i JScrollPane'e yerleştir
+            /*JPanel panel = new JPanel(new BorderLayout());
+            jPanel1.add(new JScrollPane(table), BorderLayout.CENTER);
+
+            // Bu JPanel nesnesini kullanıcı arabiriminizdeki uygun yere yerleştirin
+            jPanel1.add(panel);*/
+            rs.close();
+            //st.close();
+        }    
+
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
