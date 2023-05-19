@@ -172,7 +172,7 @@ public class arızaRaporOlustur extends javax.swing.JFrame {
                     st2.executeUpdate(sql);
                     islem = true;
                 }
-            }JOptionPane.showMessageDialog(null,"dısari");
+            }
             if(islem){
                 JOptionPane.showMessageDialog(null, "Rapor olusturuldu ");
             }else{

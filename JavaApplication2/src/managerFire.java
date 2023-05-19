@@ -1,6 +1,9 @@
 import javax.swing.JOptionPane;
 import java.awt.Color;
 import java.sql.*;
+import java.time.LocalDate;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -128,6 +131,47 @@ public class managerFire extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    public void raporEkle(String TC){
+        LocalDate date = LocalDate.now();
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+        } catch (ClassNotFoundException ex) {
+                JOptionPane.showMessageDialog(this, ex);
+                System.out.println("hata");
+        }
+        try {
+            Connection con = DriverManager.getConnection(
+                    "jdbc:mysql://aws.connect.psdb.cloud/mmooodatabase?sslMode=VERIFY_IDENTITY",
+                    "enq8p0j5ciweyw1gsfrg",
+                    "pscale_pw_2QyPbaQViAG5k6JgsBdbvKXkBkeGi6h8OKgMWImpieg");
+            Statement st = con.createStatement();
+            String sql = "SELECT ID FROM current";
+            ResultSet rs = st.executeQuery(sql);
+            String ID ="";
+            while (rs.next()) {
+                ID = rs.getString("ID");
+            }
+            sql ="SELECT isim,soyisim,ID FROM Personel";
+            rs = st.executeQuery(sql);
+            boolean islem = false;
+            while (rs.next() && !islem) {
+                String dataName = rs.getString("isim");
+                String dataSurname = rs.getString("soyisim");
+                String dataID = rs.getString("ID");
+                if(dataID.equals(ID)){
+                    String nSurname = dataName + " " + dataSurname;
+                    sql = "INSERT INTO rapor (nSurname, kategori, date, mesaj) VALUES ('"+ nSurname + "', 'Personel isten cikarma', '" + date + "', '" + TC +" TC nolu personel isten cikarildi')";
+                    Statement st2 = con.createStatement();
+                    st2.executeUpdate(sql);
+                    islem = true;
+                }
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(sekreterMusteriEkle.class.getName()).log(Level.SEVERE, null, ex);
+        }
+                    
+    }
+    
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         String tc = jTextField1.getText();
         String telNum = jTextField2.getText();
@@ -171,6 +215,7 @@ public class managerFire extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Beklenmedik bir hata oluştu: " + e.getMessage());
         }
       // TODO add your handling code here:
+      raporEkle(tc);
     }//GEN-LAST:event_jButton1ActionPerformed
         // TODO add your handling code here:
 
