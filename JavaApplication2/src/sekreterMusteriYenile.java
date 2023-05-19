@@ -1,6 +1,7 @@
 
 import java.awt.Color;
 import java.sql.*;
+import java.time.LocalDate;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -212,6 +213,47 @@ public class sekreterMusteriYenile extends javax.swing.JFrame {
     private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
     }//GEN-LAST:event_jLabel4MouseClicked
 
+    public void raporEkle(String TC, String choice){
+        LocalDate date = LocalDate.now();
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+        } catch (ClassNotFoundException ex) {
+                JOptionPane.showMessageDialog(this, ex);
+                System.out.println("hata");
+        }
+        try {
+            Connection con = DriverManager.getConnection(
+                    "jdbc:mysql://aws.connect.psdb.cloud/mmooodatabase?sslMode=VERIFY_IDENTITY",
+                    "enq8p0j5ciweyw1gsfrg",
+                    "pscale_pw_2QyPbaQViAG5k6JgsBdbvKXkBkeGi6h8OKgMWImpieg");
+            Statement st = con.createStatement();
+            String sql = "SELECT ID FROM current";
+            ResultSet rs = st.executeQuery(sql);
+            String ID ="";
+            while (rs.next()) {
+                ID = rs.getString("ID");
+            }
+            sql ="SELECT isim,soyisim,ID FROM Personel";
+            rs = st.executeQuery(sql);
+            boolean islem = false;
+            while (rs.next() && !islem) {
+                String dataName = rs.getString("isim");
+                String dataSurname = rs.getString("soyisim");
+                String dataID = rs.getString("ID");
+                if(dataID.equals(ID)){
+                    String nSurname = dataName + " " + dataSurname;
+                    sql = "INSERT INTO rapor (nSurname, kategori, date, mesaj) VALUES ('"+ nSurname + "', 'Uye bilgisi guncelleme', '" + date + "', '" + TC +" TC nolu musterinin " + choice + " bilgisi guncellendi.')";
+                    Statement st2 = con.createStatement();
+                    st2.executeUpdate(sql);
+                    islem = true;
+                }
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(sekreterMusteriEkle.class.getName()).log(Level.SEVERE, null, ex);
+        }
+                    
+    }
+    
     public void updateCustomerDatabase(String TC, String choice, String newS){
         try {
             java.sql.Connection con = DriverManager.getConnection(
@@ -259,6 +301,7 @@ public class sekreterMusteriYenile extends javax.swing.JFrame {
             }
         }
         updateCustomerDatabase(tcNo, choice, newS);
+        raporEkle(tcNo,choice);
     }//GEN-LAST:event_kButton1ActionPerformed
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed

@@ -1,6 +1,7 @@
 
 import java.awt.Color;
 import java.sql.*;
+import java.time.LocalDate;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -253,6 +254,47 @@ public class sekreterMusteriEkle extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jLabel4MouseClicked
 
+    public void raporEkle(String TC){
+        LocalDate date = LocalDate.now();
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+        } catch (ClassNotFoundException ex) {
+                JOptionPane.showMessageDialog(this, ex);
+                System.out.println("hata");
+        }
+        try {
+            Connection con = DriverManager.getConnection(
+                    "jdbc:mysql://aws.connect.psdb.cloud/mmooodatabase?sslMode=VERIFY_IDENTITY",
+                    "enq8p0j5ciweyw1gsfrg",
+                    "pscale_pw_2QyPbaQViAG5k6JgsBdbvKXkBkeGi6h8OKgMWImpieg");
+            Statement st = con.createStatement();
+            String sql = "SELECT ID FROM current";
+            ResultSet rs = st.executeQuery(sql);
+            String ID ="";
+            while (rs.next()) {
+                ID = rs.getString("ID");
+            }
+            sql ="SELECT isim,soyisim,ID FROM Personel";
+            rs = st.executeQuery(sql);
+            boolean islem = false;
+            while (rs.next() && !islem) {
+                String dataName = rs.getString("isim");
+                String dataSurname = rs.getString("soyisim");
+                String dataID = rs.getString("ID");
+                if(dataID.equals(ID)){
+                    String nSurname = dataName + " " + dataSurname;
+                    sql = "INSERT INTO rapor (nSurname, kategori, date, mesaj) VALUES ('"+ nSurname + "', 'Yeni uyelik', '" + date + "', '" + TC +" TC nolu musterinin kaydi yapildi')";
+                    Statement st2 = con.createStatement();
+                    st2.executeUpdate(sql);
+                    islem = true;
+                }
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(sekreterMusteriEkle.class.getName()).log(Level.SEVERE, null, ex);
+        }
+                    
+    }
+    
     public void addCustomerDatabase(String name, String surName, String tcNo, String memberShip, String telNo, String telNo2, String blood, String age, java.sql.Date date){
         try {
                 Class.forName("com.mysql.cj.jdbc.Driver");
@@ -306,6 +348,7 @@ public class sekreterMusteriEkle extends javax.swing.JFrame {
         String age = jTextField7.getText();
         java.sql.Date date = new java.sql.Date(new java.util.Date().getTime());
         addCustomerDatabase(name, surName, tcNo, memberShip, telNo, telNo2, blood, age, date);
+        raporEkle(tcNo);
     }//GEN-LAST:event_kButton1ActionPerformed
 
     /**
