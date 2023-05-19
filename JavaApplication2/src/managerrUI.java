@@ -1,5 +1,8 @@
 
+import java.sql.SQLException;
 import java.util.HashSet;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.swing.JPanel;
 /*
@@ -367,7 +370,13 @@ public class managerrUI extends javax.swing.JFrame {
         setVisible(false); //ilk paneli gizle
     managerpersonel frame2 = new managerpersonel();
     frame2.setVisible(true);
-   // TODO add your handling code here:
+        try {
+            frame2.displayAntrenor();
+            frame2.displaySecretary();
+            // TODO add your handling code here:
+        } catch (SQLException ex) {
+            Logger.getLogger(managerrUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jPanel5MousePressed
 
     private void jPanel2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MousePressed

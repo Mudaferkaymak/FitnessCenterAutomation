@@ -1,4 +1,7 @@
 
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JPanel;
 
 /*
@@ -382,7 +385,12 @@ public class antrenorUI extends javax.swing.JFrame {
         setVisible(false); //ilk paneli gizle
         antrenorDers frame2 = new antrenorDers();
         frame2.setVisible(true);
-        // TODO add your handling code here:
+        try {
+            frame2.displayUsers();
+            // TODO add your handling code here:
+        } catch (SQLException ex) {
+            Logger.getLogger(antrenorUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jPanel5MousePressed
     public void setColor(JPanel panel){
         panel.setBackground(new java.awt.Color(197,197,197));
