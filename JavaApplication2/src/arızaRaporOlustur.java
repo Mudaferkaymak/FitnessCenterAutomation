@@ -154,26 +154,30 @@ public class arızaRaporOlustur extends javax.swing.JFrame {
             Statement st = con.createStatement();
             String sql = "SELECT ID FROM current";
             ResultSet rs = st.executeQuery(sql);
-            String ID = rs.getString("ID");
+            String ID ="";
+            while (rs.next()) {
+                ID = rs.getString("ID");
+            }
             sql ="SELECT isim,soyisim,ID FROM Personel";
             rs = st.executeQuery(sql);
             boolean islem = false;
-            while (rs.next()) {
+            while (rs.next() && !islem) {
                 String dataName = rs.getString("isim");
                 String dataSurname = rs.getString("soyisim");
                 String dataID = rs.getString("ID");
                 if(dataID.equals(ID)){
                     String nSurname = dataName + " " + dataSurname;
                     sql = "INSERT INTO rapor (nSurname, kategori, date, mesaj) VALUES ('"+ nSurname + "', '"+ kategori +"', '" + date + "', '" + mesaj +"')";
-                    st.executeUpdate(sql);
+                    Statement st2 = con.createStatement();
+                    st2.executeUpdate(sql);
                     islem = true;
                 }
-            }
+            }JOptionPane.showMessageDialog(null,"dısari");
             if(islem){
                 JOptionPane.showMessageDialog(null, "Rapor olusturuldu ");
-                return;
+            }else{
+                JOptionPane.showMessageDialog(null, "Rapor olusturulurken bir hata ile karsilasildi");
             }
-            JOptionPane.showMessageDialog(null, "Rapor olusturulurken bir hata ile karsilasildi");
         } catch (SQLException ex) {
             Logger.getLogger(sekreterMusteriEkle.class.getName()).log(Level.SEVERE, null, ex);
         }
