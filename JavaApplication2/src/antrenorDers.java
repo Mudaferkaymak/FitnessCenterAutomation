@@ -229,23 +229,24 @@ public class antrenorDers extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jPanel3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel3MouseEntered
-      setColor(jPanel3);
+      setColor(jPanel3);  // TODO add your handling code here:
     }//GEN-LAST:event_jPanel3MouseEntered
 
     private void jPanel3MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel3MouseExited
-       resetColor(jPanel3);
+       resetColor(jPanel3);    // TODO add your handling code here:
     }//GEN-LAST:event_jPanel3MouseExited
 
     private void jPanel3MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel3MousePressed
-        setVisible(false);
+                setVisible(false); //ilk paneli gizle
         antrenorUI frame2 = new antrenorUI();
-        frame2.setVisible(true);
+        frame2.setVisible(true);     // TODO add your handling code here:
     }//GEN-LAST:event_jPanel3MousePressed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        String dersAdi  = jTextField3.getText();
+         String dersAdi  = jTextField3.getText();
         int dersSaati = Integer.parseInt(jTextField2.getText());
         try {
+            // create the mysql database connection
             Class.forName("com.mysql.cj.jdbc.Driver");
 
             try (java.sql.Connection conn = DriverManager.getConnection(
@@ -275,9 +276,9 @@ public class antrenorDers extends javax.swing.JFrame {
                             preparedStmt.close();
                             JOptionPane.showMessageDialog(null, "Ekleme işlemi başarılı oldu.");
                            conn.close(); 
-                           setVisible(false);
+                           setVisible(false); //ilk paneli gizle
                            antrenorUI frame2 = new antrenorUI();
-                           frame2.setVisible(true);
+                           frame2.setVisible(true); //ikinci paneli göster
                             break;
                         }
  
@@ -285,10 +286,13 @@ public class antrenorDers extends javax.swing.JFrame {
                     
             }
         } catch (SQLException ex) {
+            // SQL hatası oluştu, kullanıcıya hata mesajı göster
             JOptionPane.showMessageDialog(null, "Ekleme işlemi sırasında bir hata oluştu: " + ex.getMessage());
         } catch (Exception e) {
+            // Genel bir hata oluştu, kullanıcıya hata mesajı göster
             JOptionPane.showMessageDialog(null, "Beklenmedik bir hata oluştu: " + e.getMessage());
         }
+
     }//GEN-LAST:event_jButton1ActionPerformed
             public void setColor(JPanel panel){
         panel.setBackground(new java.awt.Color(197,197,197));
@@ -359,8 +363,13 @@ public class antrenorDers extends javax.swing.JFrame {
             String[] columnNames = new String[columnCount];
             for (int i = 1; i <= columnCount; i++) {
                 columnNames[i - 1] = metaData.getColumnName(i);
+                //System.out.println(columnNames[i-1]);
             }
+
+            // DefaultTableModel nesnesini oluştur ve sütun bilgilerini ekle
             DefaultTableModel tableModel = new DefaultTableModel(columnNames, 0);
+
+            // ResultSet nesnesinden verileri tabloya ekle
             while (rs.next()) {
                 Object[] row = new Object[columnCount];
                 for (int i = 1; i <= columnCount; i++) {
@@ -368,9 +377,19 @@ public class antrenorDers extends javax.swing.JFrame {
                 }
                 tableModel.addRow(row);
             }
+
+            // JTable nesnesini oluştur ve verileri ekleyerek göster
+            //  table.setModel(tableModel);
             jTable1.setModel(tableModel);
+            //  JOptionPane.showMessageDialog(null, new JScrollPane(table), "Table", JOptionPane.PLAIN_MESSAGE);
+            // JPanel nesnesini oluştur ve JTable'i JScrollPane'e yerleştir
+            /*JPanel panel = new JPanel(new BorderLayout());
+            jPanel1.add(new JScrollPane(table), BorderLayout.CENTER);
+
+            // Bu JPanel nesnesini kullanıcı arabiriminizdeki uygun yere yerleştirin
+            jPanel1.add(panel);*/
             rs.close();
-            stmt.close();
+            //st.close();
         }    
 
     }

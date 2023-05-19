@@ -23,6 +23,20 @@ import java.awt.Color;
  * @author omera
  */
 public class Login extends javax.swing.JFrame {
+    private String isim;
+
+    public String getTc() {
+        return isim;
+    }
+
+    public void setTc(String tc) {
+        this.isim = tc;
+    }
+
+    public Login(String isim) {
+        this.isim = isim;
+    }
+    
     /**
      * Creates new form Login
      */
@@ -141,9 +155,12 @@ public class Login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void kGradientPanel1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kGradientPanel1KeyPressed
+        // TODO add your handling code here:
     }//GEN-LAST:event_kGradientPanel1KeyPressed
 
     private void kGradientPanel1MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_kGradientPanel1MouseDragged
+        // TODO add your handling code here:
+        //new Drag(kGradientPanel1).moveWindow(evt);
     }//GEN-LAST:event_kGradientPanel1MouseDragged
 
     public void findFromDatabase(String userName, String password){
