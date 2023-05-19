@@ -1,5 +1,14 @@
 
 import javax.swing.JPanel;
+import java.io.File;
+import java.io.IOException;
+import javax.swing.JOptionPane;
+
+import org.apache.pdfbox.pdmodel.PDDocument;
+import org.apache.pdfbox.pdmodel.PDPage;
+import org.apache.pdfbox.pdmodel.common.PDRectangle;
+import org.apache.pdfbox.pdmodel.PDPageContentStream;
+import org.apache.pdfbox.pdmodel.font.PDType0Font;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -117,6 +126,11 @@ public class antrenorProgram extends javax.swing.JFrame {
 
         jButton2.setFont(new java.awt.Font("Segoe UI", 3, 12)); // NOI18N
         jButton2.setText("Hesapla");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -185,6 +199,11 @@ public class antrenorProgram extends javax.swing.JFrame {
         jButton1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-print-25.png"))); // NOI18N
         jButton1.setText("Yazdır");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         jPanel3.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(317, 438, -1, 24));
 
         jLabel7.setText("1. Gün");
@@ -209,6 +228,11 @@ public class antrenorProgram extends javax.swing.JFrame {
         jPanel3.add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, 105, -1));
 
         jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tüm vücut", "Kardiyo", "İtiş", "Çekiş", "Sırt", "Göğüs", "Kol", "Omuz", "Bacak", "Boş" }));
+        jComboBox3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox3ActionPerformed(evt);
+            }
+        });
         jPanel3.add(jComboBox3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 200, 105, -1));
 
         jComboBox4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tüm vücut", "Kardiyo", "İtiş", "Çekiş", "Sırt", "Göğüs", "Kol", "Omuz", "Bacak", "Boş" }));
@@ -354,6 +378,37 @@ public class antrenorProgram extends javax.swing.JFrame {
         antrenorUI frame2 = new antrenorUI();
         frame2.setVisible(true);    // TODO add your handling code here:
     }//GEN-LAST:event_jPanel4MousePressed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        float boy = Float.parseFloat(jTextField1.getText());
+        int kilo = Integer.parseInt(jTextField2.getText());
+        float kvi = kilo / (boy*boy);
+        if(kvi<18.5){
+            JOptionPane.showMessageDialog(null, "BMI = " + kvi + "\nİdeal kilonun altında");
+        }else if(18.5 <=kvi && kvi <= 24.9 ){
+            JOptionPane.showMessageDialog(null, "BMI = " + kvi + "\nİdeal kiloda");
+        }else if(25 <=kvi && kvi <= 29.9 ){
+            JOptionPane.showMessageDialog(null, "BMI = " + kvi + "\nİdeal kilonun üstünde");
+        }else if(30 <=kvi && kvi <= 39.9 ){
+            JOptionPane.showMessageDialog(null, "BMI = " + kvi + "\nİdeal kilonun çok üstünde (obez)");
+        }else if(40 <=kvi){
+            JOptionPane.showMessageDialog(null, "BMI = " + kvi + "\n İdeal kilonun çok üstünde (morbid obez)");
+        }
+
+
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        createPDF();
+
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jComboBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox3ActionPerformed
+        // TODO add your handling code here:
+    
+    }//GEN-LAST:event_jComboBox3ActionPerformed
         public void setColor(JPanel panel){
         panel.setBackground(new java.awt.Color(197,197,197));
     }
@@ -394,6 +449,175 @@ public class antrenorProgram extends javax.swing.JFrame {
             }
         });
     }
+   public void createPDF() {
+    String birinci = jComboBox1.getSelectedItem().toString();
+    String ikinci = jComboBox2.getSelectedItem().toString();
+    String ucuncu = jComboBox3.getSelectedItem().toString();
+    String dorduncu = jComboBox4.getSelectedItem().toString();
+    String besinci = jComboBox5.getSelectedItem().toString();
+    
+
+    birinci = movements(birinci);
+    ikinci = movements(ikinci);
+    ucuncu = movements(ucuncu);
+    dorduncu = movements(dorduncu);
+    besinci = movements(besinci);
+    
+    String[] paragraphs1 = birinci.split("\n");
+    String[] paragraphs2 = ikinci.split("\n");
+    String[] paragraphs3 = ucuncu.split("\n");
+    String[] paragraphs4 = dorduncu.split("\n");
+    String[] paragraphs5 = besinci.split("\n");
+    float y = 800; // Y koordinatını başlangıç değeri olarak belirleyin
+    try {
+        // Yeni bir PDF belgesi oluştur
+        PDDocument document = new PDDocument();
+
+        // Yeni bir sayfa oluştur
+        PDPage page = new PDPage(PDRectangle.A4);
+        document.addPage(page);
+
+        // Sayfa içeriği için bir PDPageContentStream oluştur
+        PDPageContentStream contentStream = new PDPageContentStream(document, page);
+
+        // Font dosyasını yükleyin
+        PDType0Font font = PDType0Font.load(document, new File("C:\\Users\\MÜDAFERKAYMAK\\Desktop\\Kcontrol\\Helvetica.ttf"));
+
+        // Metni belgeye ekle
+        contentStream.setFont(font, 12);
+        contentStream.beginText();
+        contentStream.newLineAtOffset(25, 800);
+
+        // Metni paragraf biçimlendirmesiyle ekle
+        contentStream.setLeading(14.5f);
+       
+        for (String paragraph : paragraphs1) {
+               contentStream.showText(paragraph);
+               contentStream.newLineAtOffset(0, -14.5f); // Y koordinatını düşürerek yeni satıra geç
+            }
+        for (String paragraph : paragraphs2) {
+            contentStream.showText(paragraph);
+            contentStream.newLineAtOffset(0, -14.5f); // Y koordinatını düşürerek yeni satıra geç
+        }
+        for (String paragraph : paragraphs3) {
+            contentStream.showText(paragraph);
+            contentStream.newLineAtOffset(0, -14.5f); // Y koordinatını düşürerek yeni satıra geç
+        }
+        for (String paragraph : paragraphs4) {
+            contentStream.showText(paragraph);
+            contentStream.newLineAtOffset(0, -14.5f); // Y koordinatını düşürerek yeni satıra geç
+        }
+        for (String paragraph : paragraphs5) {
+            contentStream.showText(paragraph);
+            contentStream.newLineAtOffset(0, -14.5f); // Y koordinatını düşürerek yeni satıra geç
+        }
+        contentStream.endText();
+
+        // İçerik akışını kapat
+        contentStream.close();
+
+        // PDF belgesini kaydet
+        document.save(new File("MMMOOO.pdf"));
+
+        // PDF belgesini kapat
+        document.close();
+
+        System.out.println("PDF dosyası oluşturuldu.");
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+}
+
+public String movements(String day) {
+    String message = "";
+
+    switch (day) {
+        case "İtiş" -> {
+            message = "\n\n İtiş Günü\n\n"
+                    + " - Bench Press (3 set 5-7 tekrar)\n"
+                    + " - Seated Dumbbell Shoulder Press (3 set 6-8 tekrar)\n"
+                    + " - Incline Dumbbell Press (3 set 8-10 tekrar)\n"
+                    + " - Side Lateral Raise (2 set 10-12 tekrar)\n"
+                    + " - Triceps Pressdown (2 set 8-10 tekrar)\n"
+                    + " - Overhead Triceps Extension (2 set 8-10 tekrar)";
+        }
+        case "Çekiş" -> {
+            message = "\n\n Çekiş Günü\n\n"
+                    + " - Bent-over Row (3 set 5-7 tekrar)\n"
+                    + " - Pull Up (3 set 6-8 tekrar)\n"
+                    + " - Barbell Shrug (3 set 8-10 tekrar)\n"
+                    + " - Face Pull (2 set 10-12 tekrar)\n"
+                    + " - Barbell Curl (2 set 8-10 tekrar)\n"
+                    + " - Dumbbell Hammer Curl (2 set 8-10 tekrar)";
+        }
+        case "Kardiyo" -> {
+            message = "\n\n Kardiyo Günü\n\n"
+                    + " - Burpees\n"
+                    + " - Manmakers\n"
+                    + " - High Knees\n"
+                    + " - Mountain Climbers\n"
+                    + " - Lunge Jump\n"
+                    + " - Squat Jump";
+        }
+        case "Sırt" -> {
+            message = "\n\n Sırt Günü\n\n"
+                    + " - Genis Tutus Barfiks (4 set 15 tekrar)\n"
+                    + " - Lat Pulldown (4 set 12-15 tekrar)\n"
+                    + " - Cable Rope Row (4 set 20 tekrar)\n"
+                    + " - Ters Tutus Barbell Row ( 4 set 10-15 tekrar)";
+        }
+        case "Göğüs" -> {
+            message = "\n\n Göğüs Günü\n\n"
+                    + " - Bench Press (4 set 10 tekrar)\n"
+                    + " - Dumbell Press (4 set 8 tekrar)\n"
+                    + " - İncline Bench Cable Fly (3 set 12-15 tekrar)\n"
+                    + " - Cable Crossover ( 3 set 10-12 tekrar)";
+        }
+        case "Kol" -> {
+            message = "\n\n Kol Günü\n\n"
+                    + " - Triangle push up (3 set 10-12 tekrar)\n"
+                    + " - Hammer Curls (4 set 10-12 tekrar)\n"
+                    + " - Cable Curl (3 set 12 tekrar)\n"
+                    + " - Dumbell Curl (3 set 10 tekrar)\n"
+                    + " - Rope Pushdown (3 set 12 tekrar)";
+        }
+        case "Omuz" -> {
+            message = "\n\n Omuz Günü\n\n"
+                    + " - Dumbbell Lateral Raise (4 set 10 tekrar)\n"
+                    + " - Facepull (4 set 10 tekrar)\n"
+                    + " - Dumbell Shoulder Press (4 set 10 tekrar)\n"
+                    + " - Dumbbell Front Raise (4 set 10 tekrar)";
+        }
+        case "Bacak" -> {
+            message = "\n\n Bacak Günü\n\n"
+                    + " - Squat (3 set 6-8 tekrar)\n"
+                    + " - Romanian Deadlift (2 set 8-10 tekrar)\n"
+                    + " - Leg Press (2 set 10-12 tekrar)\n"
+                    + " - Leg Curl (2 set 10-12 tekrar)\n"
+                    + " - Calf Raise (4 set 8-10 tekrar)\n"
+                    + " - Hanging Leg Raise (2 set 10-15 tekrar)";
+        }
+        case "Tüm vücut" -> {
+            message = "\n\n Tüm Vücut Günü\n\n"
+                    + " - Bench press (4 set 10 tekrar)\n"
+                    + " - Lat pulldown (4 set 8 tekrar)\n"
+                    + " - Squat (4 set 10 tekrar)\n"
+                    + " - Leg curl (3 set 10-15 tekrar)\n"
+                    + " - Dumbbell shoulder press (4 set 10 tekrar)\n"
+                    + " - Incline curl (3 set 10 tekrar)\n"
+                    + " - Rope Pushdown (3 set 12 tekrar)";
+        }
+        case "Boş" -> {
+            message = "";
+        }
+        default -> {
+            message = "Değişken ile eşleşme bulunamadı.";
+            System.out.println(message);
+        }
+    }
+
+    return message.replaceAll("\n", "\r\n");
+}
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
