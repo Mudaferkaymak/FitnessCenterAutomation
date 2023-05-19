@@ -383,7 +383,12 @@ public class managerrUI extends javax.swing.JFrame {
         setVisible(false); //ilk paneli gizle
     managerrapor frame2 = new managerrapor();
     frame2.setVisible(true);
-    // TODO add your handling code here:
+        try {
+            frame2.displayReport();
+            // TODO add your handling code here:
+        } catch (SQLException ex) {
+            Logger.getLogger(managerrUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jPanel2MousePressed
 
     private void jPanel3MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel3MousePressed

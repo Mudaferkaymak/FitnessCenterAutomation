@@ -361,10 +361,9 @@ public class antrenorDers extends javax.swing.JFrame {
             ResultSetMetaData metaData = rs.getMetaData();
             int columnCount = metaData.getColumnCount();
             String[] columnNames = new String[columnCount];
-            for (int i = 1; i <= columnCount; i++) {
-                columnNames[i - 1] = metaData.getColumnName(i);
-                //System.out.println(columnNames[i-1]);
-            }
+            columnNames[0] = "Ders Adı";
+            columnNames[1] = "Haftalık Ders";
+            columnNames[2] = "Öğrenci Sayısı";
 
             // DefaultTableModel nesnesini oluştur ve sütun bilgilerini ekle
             DefaultTableModel tableModel = new DefaultTableModel(columnNames, 0);
@@ -378,16 +377,8 @@ public class antrenorDers extends javax.swing.JFrame {
                 tableModel.addRow(row);
             }
 
-            // JTable nesnesini oluştur ve verileri ekleyerek göster
-            //  table.setModel(tableModel);
             jTable1.setModel(tableModel);
-            //  JOptionPane.showMessageDialog(null, new JScrollPane(table), "Table", JOptionPane.PLAIN_MESSAGE);
-            // JPanel nesnesini oluştur ve JTable'i JScrollPane'e yerleştir
-            /*JPanel panel = new JPanel(new BorderLayout());
-            jPanel1.add(new JScrollPane(table), BorderLayout.CENTER);
 
-            // Bu JPanel nesnesini kullanıcı arabiriminizdeki uygun yere yerleştirin
-            jPanel1.add(panel);*/
             rs.close();
             //st.close();
         }    

@@ -66,9 +66,6 @@ public class sekretetabone extends javax.swing.JFrame {
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 jPanel5MouseExited(evt);
             }
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                jPanel5MousePressed(evt);
-            }
         });
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -304,12 +301,6 @@ public class sekretetabone extends javax.swing.JFrame {
         resetColor(jPanel5);
     }//GEN-LAST:event_jPanel5MouseExited
 
-    private void jPanel5MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel5MousePressed
-        setVisible(false);
-        sekretetabone frame2 = new sekretetabone();
-        frame2.setVisible(true);
-    }//GEN-LAST:event_jPanel5MousePressed
-
     private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
         try {
             java.awt.EventQueue.invokeLater(new Runnable() {
@@ -359,6 +350,7 @@ public class sekretetabone extends javax.swing.JFrame {
             sekretetabone myForm = new sekretetabone();
             myForm.setVisible(true);
             myForm.displayUsers();
+            
         } catch (SQLException ex) {
             java.util.logging.Logger.getLogger(sekretetabone.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } 
@@ -384,9 +376,10 @@ public class sekretetabone extends javax.swing.JFrame {
             ResultSetMetaData metaData = rs.getMetaData();
             int columnCount = metaData.getColumnCount();
             String[] columnNames = new String[columnCount];
-            for (int i = 1; i <= columnCount; i++) {
-                columnNames[i - 1] = metaData.getColumnName(i);
-            }
+            columnNames[0] = "Ad Soyad";
+            columnNames[1] = "Kayıt Tarihi";
+            columnNames[2] = "Üyelik Süresi";
+            columnNames[3] = "T.C";
             DefaultTableModel tableModel = new DefaultTableModel(columnNames, 0);
             while (rs.next()) {
                 Object[] row = new Object[columnCount];
@@ -396,6 +389,8 @@ public class sekretetabone extends javax.swing.JFrame {
                 tableModel.addRow(row);
             }
             jTable1.setModel(tableModel);
+            jTable1.revalidate();
+            jTable1.repaint();
             rs.close();
             st.close();
         }    

@@ -1,3 +1,16 @@
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -171,11 +184,55 @@ public class managerrapor extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new managerrapor().setVisible(true);
+            //   new managerrapor().setVisible(true);
+                managerrapor myForm = new managerrapor();
+               myForm.setVisible(true);
+                try {
+                    myForm.displayReport();
+                } catch (SQLException ex) {
+                    Logger.getLogger(managerrapor.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
+    public void displayReport() throws SQLException {
+            JTable table = new JTable();
+            DefaultTableModel model = new DefaultTableModel();
+            table.setModel(model);
+            try {
+                Class.forName("com.mysql.cj.jdbc.Driver");
+            } catch (ClassNotFoundException ex) {
+                JOptionPane.showMessageDialog(this, ex);
+                System.out.println("hata");
+            }
+        try (Connection Con = DriverManager.getConnection(
+                "jdbc:mysql://aws.connect.psdb.cloud/mmooodatabase?sslMode=VERIFY_IDENTITY",
+                "enq8p0j5ciweyw1gsfrg",
+                "pscale_pw_2QyPbaQViAG5k6JgsBdbvKXkBkeGi6h8OKgMWImpieg")) {
+            Statement st = Con.createStatement();
+            ResultSet rs = st.executeQuery("SELECT nSurname,kategori,date,mesaj FROM rapor");
 
+            ResultSetMetaData metaData = rs.getMetaData();
+            int columnCount = metaData.getColumnCount();
+            String[] columnNames = new String[columnCount];
+            columnNames[0] = "Ad Soyad";
+            columnNames[1] = "Kategori";
+            columnNames[2] = "Rapor Tarihi";
+            columnNames[3] = "Mesaj";
+            DefaultTableModel tableModel = new DefaultTableModel(columnNames, 0);
+            while (rs.next()) {
+                Object[] row = new Object[columnCount];
+                for (int i = 1; i <= columnCount; i++) {
+                    row[i - 1] = rs.getObject(i);
+                }
+                tableModel.addRow(row);
+            }
+            jTable1.setModel(tableModel);
+            rs.close();
+            st.close();
+        }    
+
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;

@@ -417,7 +417,7 @@ public class managerHire extends javax.swing.JFrame {
                      JOptionPane.showMessageDialog(null, "Ekleme işlemi başarılı oldu.");
                     conn.close(); 
                     setVisible(false); //ilk paneli gizle
-                    managerrUI frame2 = new managerrUI();
+                    managerpersonel frame2 = new managerpersonel();
                     frame2.setVisible(true); //ikinci paneli göster
             }
         } catch (SQLException ex) {

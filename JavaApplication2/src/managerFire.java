@@ -176,19 +176,15 @@ public class managerFire extends javax.swing.JFrame {
         String tc = jTextField1.getText();
         String telNum = jTextField2.getText();
         try {
-            // create the mysql database connection
+   
             Class.forName("com.mysql.cj.jdbc.Driver");
-            // create the mysql delete statement.
-            // i'm deleting the row where the id is "3", which corresponds to my
-            // "Barney Rubble" record.
+  
             try (Connection conn = DriverManager.getConnection(
                     "jdbc:mysql://aws.connect.psdb.cloud/mmooodatabase?sslMode=VERIFY_IDENTITY",
                     "enq8p0j5ciweyw1gsfrg",
                     "pscale_pw_2QyPbaQViAG5k6JgsBdbvKXkBkeGi6h8OKgMWImpieg"
             )) {
-                // create the mysql delete statement.
-                // i'm deleting the row where the id is "3", which corresponds to my
-                // "Barney Rubble" record.
+
                 String query = "delete from Personel where ID = ?";
                 PreparedStatement preparedStmt = conn.prepareStatement(query);
                 preparedStmt.setString(1, tc);
@@ -203,7 +199,7 @@ public class managerFire extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(null, "Silme işlemi başarılı oldu.");
                     conn.close(); 
                     setVisible(false); //ilk paneli gizle
-                    managerrUI frame2 = new managerrUI();
+                    managerpersonel frame2 = new managerpersonel();
                     frame2.setVisible(true); //ikinci paneli göster
                 }
             }

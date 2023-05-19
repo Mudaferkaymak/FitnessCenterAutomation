@@ -6,6 +6,8 @@ import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -298,7 +300,19 @@ public class managerpersonel extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new managerpersonel().setVisible(true);
+      //          new managerpersonel().setVisible(true);
+                managerpersonel myForm = new managerpersonel();
+                myForm.setVisible(true);
+                try {
+                    myForm.displayAntrenor();
+                } catch (SQLException ex) {
+                    Logger.getLogger(managerpersonel.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                try {
+                    myForm.displaySecretary();
+                } catch (SQLException ex) {
+                    Logger.getLogger(managerpersonel.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
@@ -325,10 +339,10 @@ public class managerpersonel extends javax.swing.JFrame {
             ResultSetMetaData metaData = rs.getMetaData();
             int columnCount = metaData.getColumnCount();
             String[] columnNames = new String[columnCount];
-            for (int i = 1; i <= columnCount; i++) {
-                columnNames[i - 1] = metaData.getColumnName(i);
-                //System.out.println(columnNames[i-1]);
-            }
+            columnNames[0] = "Ad";
+            columnNames[1] = "İşe Giriş Tarihi";
+            columnNames[2] = "Maaş";
+            columnNames[3] = "ID";
 
             // DefaultTableModel nesnesini oluştur ve sütun bilgilerini ekle
             DefaultTableModel tableModel = new DefaultTableModel(columnNames, 0);
@@ -342,16 +356,9 @@ public class managerpersonel extends javax.swing.JFrame {
                 tableModel.addRow(row);
             }
 
-            // JTable nesnesini oluştur ve verileri ekleyerek göster
-          //  table.setModel(tableModel);
+   
             jTable2.setModel(tableModel);
-           //  JOptionPane.showMessageDialog(null, new JScrollPane(table), "Table", JOptionPane.PLAIN_MESSAGE);
-            // JPanel nesnesini oluştur ve JTable'i JScrollPane'e yerleştir
-            /*JPanel panel = new JPanel(new BorderLayout());
-            jPanel1.add(new JScrollPane(table), BorderLayout.CENTER);
 
-            // Bu JPanel nesnesini kullanıcı arabiriminizdeki uygun yere yerleştirin
-            jPanel1.add(panel);*/
                  rs.close();
 //                 st.close();
                  Con.close();    
@@ -373,19 +380,17 @@ public class managerpersonel extends javax.swing.JFrame {
                     "enq8p0j5ciweyw1gsfrg",
                     "pscale_pw_2QyPbaQViAG5k6JgsBdbvKXkBkeGi6h8OKgMWImpieg");
        //     Statement stmt = Con.createStatement();
-            PreparedStatement ps = Con.prepareStatement("SELECT isim, girisTarihi, maas,ID FROM Personel WHERE pozisyon = ?");
+            PreparedStatement ps = Con.prepareStatement("SELECT isim, girisTarihi, maas FROM Personel WHERE pozisyon = ?");
             ps.setString(1, "0");
             ResultSet rs = ps.executeQuery();
 
             ResultSetMetaData metaData = rs.getMetaData();
             int columnCount = metaData.getColumnCount();
             String[] columnNames = new String[columnCount];
-            for (int i = 1; i <= columnCount; i++) {
-                columnNames[i - 1] = metaData.getColumnName(i);
-                //System.out.println(columnNames[i-1]);
-            }
-
-            // DefaultTableModel nesnesini oluştur ve sütun bilgilerini ekle
+            columnNames[0] = "Ad";
+            columnNames[1] = "İşe Giriş Tarihi";
+            columnNames[2] = "Maaş";
+ 
             DefaultTableModel tableModel = new DefaultTableModel(columnNames, 0);
 
             // ResultSet nesnesinden verileri tabloya ekle
@@ -397,18 +402,8 @@ public class managerpersonel extends javax.swing.JFrame {
                 tableModel.addRow(row);
             }
 
-            // JTable nesnesini oluştur ve verileri ekleyerek göster
-          //  table.setModel(tableModel);
             jTable1.setModel(tableModel);
-           //  JOptionPane.showMessageDialog(null, new JScrollPane(table), "Table", JOptionPane.PLAIN_MESSAGE);
-            // JPanel nesnesini oluştur ve JTable'i JScrollPane'e yerleştir
-            /*JPanel panel = new JPanel(new BorderLayout());
-            jPanel1.add(new JScrollPane(table), BorderLayout.CENTER);
-
-            // Bu JPanel nesnesini kullanıcı arabiriminizdeki uygun yere yerleştirin
-            jPanel1.add(panel);*/
                  rs.close();
-//                 st.close();
                  Con.close();    
 
     }

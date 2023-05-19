@@ -397,9 +397,9 @@ public class sekreterrezervasyon extends javax.swing.JFrame {
                 ResultSetMetaData metaData = rs.getMetaData();
                 int columnCount = metaData.getColumnCount();
                 String[] columnNames = new String[columnCount];
-                for (int i = 1; i <= columnCount; i++) {
-                    columnNames[i - 1] = metaData.getColumnName(i);
-                }
+                columnNames[0] = "İsim";
+                columnNames[1] = "Verdiği Ders";
+                columnNames[2] = "Öğrenci Sayısı";
                 DefaultTableModel tableModel = new DefaultTableModel(columnNames, 0);
                 while (rs.next()) {
                     Object[] row = new Object[columnCount];
@@ -436,9 +436,10 @@ public class sekreterrezervasyon extends javax.swing.JFrame {
             ResultSetMetaData metaData = rs.getMetaData();
             int columnCount = metaData.getColumnCount();
             String[] columnNames = new String[columnCount];
-            for (int i = 1; i <= columnCount; i++) {
-                columnNames[i - 1] = metaData.getColumnName(i);
-            }
+            columnNames[0] = "İsim";
+            columnNames[1] = "Soyisim";
+            columnNames[2] = "Kalan Abonelik";
+            columnNames[3] = "TC No";
             DefaultTableModel tableModel = new DefaultTableModel(columnNames, 0);
             while (rs.next()) {
                 Object[] row = new Object[columnCount];
