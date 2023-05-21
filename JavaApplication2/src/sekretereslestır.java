@@ -43,6 +43,8 @@ public class sekretereslestır extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         dersadıtext = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setType(java.awt.Window.Type.POPUP);
@@ -113,6 +115,36 @@ public class sekretereslestır extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel5.setText("Antrenör");
         kGradientPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 160, -1, -1));
+
+        jPanel1.setBackground(new Color(0,0,0,0)
+        );
+        jPanel1.setOpaque(false);
+        jPanel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jPanel1MousePressed(evt);
+            }
+        });
+
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-home-page-24.png"))); // NOI18N
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel6)
+                .addContainerGap(10, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel6)
+                .addContainerGap(10, Short.MAX_VALUE))
+        );
+
+        kGradientPanel1.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 0, 40, 40));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -281,6 +313,12 @@ public class sekretereslestır extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_dersadıtextActionPerformed
 
+    private void jPanel1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MousePressed
+        setVisible(false); //ilk paneli gizle
+        sekreterrezervasyon frame2 = new sekreterrezervasyon();
+        frame2.setVisible(true);     // TODO add your handling code here:
+    }//GEN-LAST:event_jPanel1MousePressed
+
     /**
      * @param args the command line arguments
      */
@@ -326,6 +364,8 @@ public class sekretereslestır extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JPanel jPanel1;
     private com.k33ptoo.components.KGradientPanel kGradientPanel1;
     private javax.swing.JTextField mtc;
     // End of variables declaration//GEN-END:variables

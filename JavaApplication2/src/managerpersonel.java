@@ -261,12 +261,12 @@ public class managerpersonel extends javax.swing.JFrame {
     }//GEN-LAST:event_jPanel2MouseClicked
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
-            managerHire frame = new managerHire();
+     setVisible(false);         managerHire frame = new managerHire();
     frame.show();     // TODO add your handling code here:
     }//GEN-LAST:event_jButton1MouseClicked
 
     private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
-            managerFire frame = new managerFire();
+     setVisible(false);         managerFire frame = new managerFire();
     frame.show();     // TODO add your handling code here:
     }//GEN-LAST:event_jButton2MouseClicked
 

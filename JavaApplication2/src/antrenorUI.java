@@ -41,9 +41,6 @@ public class antrenorUI extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jPanel3 = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
@@ -173,51 +170,7 @@ public class antrenorUI extends javax.swing.JFrame {
                 .addContainerGap(103, Short.MAX_VALUE))
         );
 
-        jPanel8.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 270, 160, 250));
-
-        jPanel3.setBackground(java.awt.SystemColor.controlHighlight);
-        jPanel3.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jPanel3jpanel3mousenter(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jPanel3jpanel3exit(evt);
-            }
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                jPanel3MousePressed(evt);
-            }
-        });
-
-        jLabel3.setBackground(java.awt.SystemColor.controlHighlight);
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-mega-sales-64.png"))); // NOI18N
-
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(45, 118, 232));
-        jLabel4.setText("***");
-
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(46, 46, 46)
-                .addComponent(jLabel3)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(29, 29, 29)
-                .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(105, Short.MAX_VALUE))
-        );
-
-        jPanel8.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 270, 160, 250));
+        jPanel8.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 270, 160, 250));
 
         jPanel4.setBackground(java.awt.SystemColor.controlHighlight);
         jPanel4.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -262,7 +215,7 @@ public class antrenorUI extends javax.swing.JFrame {
                 .addContainerGap(107, Short.MAX_VALUE))
         );
 
-        jPanel8.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(634, 270, 160, 250));
+        jPanel8.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 270, 160, 250));
 
         jPanel5.setBackground(java.awt.SystemColor.controlHighlight);
         jPanel5.setPreferredSize(new java.awt.Dimension(150, 270));
@@ -307,17 +260,20 @@ public class antrenorUI extends javax.swing.JFrame {
                 .addContainerGap(101, Short.MAX_VALUE))
         );
 
-        jPanel8.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 270, 150, 250));
+        jPanel8.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 270, 150, 250));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, 828, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, 828, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, 536, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
@@ -345,18 +301,6 @@ public class antrenorUI extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jPanel2MousePressed
 
-    private void jPanel3jpanel3mousenter(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel3jpanel3mousenter
-        setColor(jPanel3);      // TODO add your handling code here:
-    }//GEN-LAST:event_jPanel3jpanel3mousenter
-
-    private void jPanel3jpanel3exit(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel3jpanel3exit
-        resetColor(jPanel3);      // TODO add your handling code here:
-    }//GEN-LAST:event_jPanel3jpanel3exit
-
-    private void jPanel3MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel3MousePressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jPanel3MousePressed
-
     private void jPanel4jpanel4enter(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel4jpanel4enter
         setColor(jPanel4);    // TODO add your handling code here:
     }//GEN-LAST:event_jPanel4jpanel4enter
@@ -366,7 +310,7 @@ public class antrenorUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jPanel4jpanel4exit
 
     private void jPanel4MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel4MousePressed
-            setVisible(false); //ilk paneli gizle
+        //ilk paneli gizle
         arızaRaporOlustur frame2 = new arızaRaporOlustur();
         frame2.setVisible(true);    // TODO add your handling code here:
     }//GEN-LAST:event_jPanel4MousePressed
@@ -439,8 +383,6 @@ public class antrenorUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
@@ -448,7 +390,6 @@ public class antrenorUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
