@@ -64,8 +64,6 @@ public class Login extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
 
-        setMaximumSize(new java.awt.Dimension(2147, 2147));
-
         kGradientPanel1.setkBorderRadius(15);
         kGradientPanel1.setkEndColor(new java.awt.Color(0, 51, 204));
         kGradientPanel1.setkGradientFocus(-11);
@@ -134,7 +132,7 @@ public class Login extends javax.swing.JFrame {
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("MMOOO GYM");
+        jLabel5.setText("MMMOO GYM");
         kGradientPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 40, 250, 50));
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-gym-100.png"))); // NOI18N
