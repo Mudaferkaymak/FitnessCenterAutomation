@@ -302,11 +302,13 @@ public class sektretersatıs extends javax.swing.JFrame {
         int whey = wheycounter; // 1k
         int gain = gainercounter; // 350
         int creat = kreatincounter; // 250
+        String name = jTextField5.getText();
+        
         String mesaj1 = prew + " adet Preworkout, " + whey + " adet Whey Protein, " + gain + " adet Gainer, " + creat + " adet Kreatin";
         int money = prew*400 + whey*1000 + gain*350 + creat*250;
         String mesaj2 = "Odenen toplam ucret " + money +" tl." ;
         LocalDate date = LocalDate.now();
-        sellCustomerSuplement("", mesaj1, mesaj2, date);
+        sellCustomerSuplement(name, mesaj1, mesaj2, date);
         
     }//GEN-LAST:event_jButton5ActionPerformed
     

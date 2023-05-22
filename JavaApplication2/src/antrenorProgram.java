@@ -112,6 +112,11 @@ public class antrenorProgram extends javax.swing.JFrame {
         jButton1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-print-25.png"))); // NOI18N
         jButton1.setText("Yazdır");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         jPanel3.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 440, -1, 24));
 
         jLabel7.setText("1. Gün");
@@ -179,22 +184,22 @@ public class antrenorProgram extends javax.swing.JFrame {
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel3.setText("BMI Hesaplama");
-        jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, -1, -1));
+        jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, -1, -1));
 
         jLabel4.setText("Boy");
-        jPanel3.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, 123, -1));
+        jPanel3.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, 123, -1));
 
         jTextField1.setOpaque(true);
-        jPanel3.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, 103, -1));
+        jPanel3.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, 103, -1));
 
         jLabel5.setText("Kilo");
-        jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 330, 123, -1));
+        jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, 123, -1));
 
         jTextField2.setOpaque(true);
-        jPanel3.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 350, 103, -1));
+        jPanel3.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, 103, -1));
 
         jLabel6.setText("Cinsiyet");
-        jPanel3.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 390, 64, -1));
+        jPanel3.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 280, 64, -1));
 
         jRadioButton1.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
         jRadioButton1.setText("Erkek");
@@ -203,15 +208,15 @@ public class antrenorProgram extends javax.swing.JFrame {
                 jRadioButton1ActionPerformed(evt);
             }
         });
-        jPanel3.add(jRadioButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 420, -1, -1));
+        jPanel3.add(jRadioButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 310, -1, -1));
 
         jRadioButton2.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
         jRadioButton2.setText("Kadın");
-        jPanel3.add(jRadioButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 420, -1, -1));
+        jPanel3.add(jRadioButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 310, -1, -1));
 
         jButton2.setFont(new java.awt.Font("Segoe UI", 3, 12)); // NOI18N
         jButton2.setText("Hesapla");
-        jPanel3.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 450, -1, -1));
+        jPanel3.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 340, -1, -1));
 
         jLabel12.setText("Vücut kütle İndeksini(BMI) ");
         jPanel3.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 140, 20));
